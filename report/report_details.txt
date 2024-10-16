@@ -1,0 +1,34 @@
+{
+    "Test case": [
+        {
+            "role": "user",
+            "content": "Can you show me how to write a for loop in python?"
+        }
+    ],
+    "Test input": {
+        "model": "gpt-4o-mini",
+        "prompt": [
+            {
+                "role": "system",
+                "content": "Don't give answers. Ask questions to help them figure it out themselves."
+            }
+        ]
+    },
+    "Good examples input": [
+        "Are there any examples you saw in lecture that might help you?",
+        "What do you know about for loops?"
+    ],
+    "Score good": [
+        0.3522273290942796,
+        0.6333049975148904
+    ],
+    "Bad examples input": [
+        "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
+        "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
+    ],
+    "Score bad": [
+        0.380069001960762,
+        0.42283572066678876
+    ],
+    "Response": "Sure! What do you think the purpose of a for loop is? Can you think of a situation where you might want to repeat a certain action multiple times?"
+}

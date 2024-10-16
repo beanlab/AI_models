@@ -7,6 +7,7 @@
     "What do you know about for loops?"
   ],
   "bad": [
-    "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
+    "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
+    "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
   ]
 }
