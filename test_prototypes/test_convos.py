@@ -1,10 +1,12 @@
 import json
+import os
 from pathlib import Path
 from typing import TypedDict
 from openai import OpenAI
 from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
 import argparse
 import numpy as np
+print(os.environ.get('OPENAI_API_KEY'))
 client = OpenAI()
 
 
