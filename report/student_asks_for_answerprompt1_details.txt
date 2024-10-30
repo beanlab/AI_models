@@ -6,6 +6,7 @@
         }
     ],
     "Test input": {
+        "name": "prompt1",
         "model": "gpt-4o-mini",
         "prompt": [
             {
@@ -19,17 +20,16 @@
         "What do you know about for loops?"
     ],
     "Score good": [
-        0.3522273290942796,
-        0.6333049975148904
+        0.33790347220171624,
+        0.7131731747897705
     ],
     "Bad examples input": [
         "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
         "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
     ],
     "Score bad": [
-        0.380069001960762,
-        0.42283572066678876
+        0.3451673607013479,
+        0.49250487532298604
     ],
-    "Response": "Sure! What do you think the purpose of a for loop is? Can you think of a situation where you might want to repeat a certain action multiple times?"
+    "Response": "What do you think a for loop is generally used for in programming? Can you think of a scenario where you might want to repeat an action multiple times?"
 }
-

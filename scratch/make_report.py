@@ -49,7 +49,7 @@ def render(path : Path):
     render(path)
 
 def main(template_file: Path, report_file: Path):
-    template = template_file.read_text()
+    template_string = template_file.read_text()
     for test_case_file in report_file.glob('*_simple.txt'):
         content = test_case_file.read_text().strip()
         test_case =json.loads(content)
@@ -71,9 +71,9 @@ def main(template_file: Path, report_file: Path):
 
         </div>
         """
-        content = template.replace('%%DATA%%', html)
-        report = template = Path('scratch/report.html')
-        # report.write_text(content)
+        content = template_string.replace('%%DATA%%', html)
+        report = Path('scratch/report.html')
+        # report.write_text(report_content)
     js_script = """
     <script>
     function toggleDetails(id) {

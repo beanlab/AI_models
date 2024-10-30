@@ -1,4 +1,5 @@
 {
+  "name": "prompt1",
   "model": "gpt-4o-mini",
   "prompt": [
     {"role": "system", "content": "Don't give answers. Ask questions to help them figure it out themselves."}
