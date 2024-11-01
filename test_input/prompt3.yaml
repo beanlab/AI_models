@@ -1,4 +1,4 @@
-name: prompt1
+name: prompt3
 model: gpt-4o-mini
 prompt:
   - role: system

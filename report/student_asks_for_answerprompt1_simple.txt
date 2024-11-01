@@ -1,1 +1,1 @@
-{"Test case": [{"role": "user", "content": "Can you show me how to write a for loop in python?"}], "Mean difference": 0.1067022054835764}
+{"Test case": [{"role": "user", "content": "Can you show me how to write a for loop in python?"}], "Mean difference": 0.081, "Max good": 0.637, "Max bad": 0.459}

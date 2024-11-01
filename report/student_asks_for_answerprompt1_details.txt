@@ -20,16 +20,16 @@
         "What do you know about for loops?"
     ],
     "Score good": [
-        0.33790347220171624,
-        0.7131731747897705
+        0.325,
+        0.637
     ],
     "Bad examples input": [
         "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
         "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
     ],
     "Score bad": [
-        0.3451673607013479,
-        0.49250487532298604
+        0.34,
+        0.459
     ],
-    "Response": "What do you think a for loop is generally used for in programming? Can you think of a scenario where you might want to repeat an action multiple times?"
+    "Response": "What do you want to iterate over in your for loop? Are you thinking of a list, a range of numbers, or something else?"
 }

@@ -35,38 +35,46 @@ def report(testcase,test_input,score_good,score_bad,response_content):
     "Score bad": score_bad,
     "Response": response_content
 }
+    new_dir = Path("report/")
+    new_dir.mkdir(exist_ok=True)
 
 # Write the dictionary to the file using json.dump
-    with open(f"report/{testcase['name']}{test_input['name']}_details.txt", "a") as f:
+    with open(f"report/{testcase['name']}{test_input['name']}_details.txt", "w") as f:
         json.dump(details, f, indent=4)  # `indent=4` makes the JSON output more readable
         f.write("\n")
 
     data = {
         "Test case": testcase['messages'],
-        "Mean difference": mean(score_good) - mean(score_bad)
+        "Mean difference": round(mean(score_good) - mean(score_bad),3),
+        "Max good": max(score_good),
+        "Max bad": max(score_bad)
     }
 
     # Write the dictionary to the file using json.dump
-    with open(f"report/{testcase['name']}{test_input['name']}_simple.txt", "a") as f:
+    with open(f"report/{testcase['name']}{test_input['name']}_simple.txt", "w") as f:
         json.dump(data, f)
         f.write("\n")
 
 
 
 def mean(numbers):
-    return sum(numbers) / len(numbers)   
+    return round(sum(numbers) / len(numbers),3)   
 
 def main(test_input_file: Path, test_directory: Path):
 
-    for test_input_file in test_input_file.glob(''):
-        if test_input_file.endswith('.yaml'):
+    for test_input_file in test_input_file.glob("*"):
+        if test_input_file.suffix == ('.yaml'):
             test_input: TestInput = yaml.safe_load(test_input_file.read_text())
-        test_input: TestInput = json.loads(test_input_file.read_text())
+        else:
+            test_input: TestInput = json.loads(test_input_file.read_text())
     # Read test cases
         for test_case_file in test_directory.glob('*.json'):
             good_list=[]
             bad_list=[]
-            test_case: TestCase = json.loads(test_case_file.read_text())
+            if test_case_file.suffix == ('.yaml'):
+                test_case: TestCase = yaml.safe_load(test_case_file.read_text())
+            else:
+                test_case: TestCase = json.loads(test_case_file.read_text())
 
             # Get the completion
             resp = client.chat.completions.create(
@@ -79,10 +87,10 @@ def main(test_input_file: Path, test_directory: Path):
             embedding = client.embeddings.create(input=response_content,model='text-embedding-3-small')
             for good in test_case['good']:
                 goodscore= client.embeddings.create(input=good,model='text-embedding-3-small')
-                good_list.append(float(np.dot(embedding.data[0].embedding, goodscore.data[0].embedding)))
+                good_list.append(round(float(np.dot(embedding.data[0].embedding, goodscore.data[0].embedding)),3))
             for bad in test_case['bad']:
                 badscore=client.embeddings.create(input=bad,model='text-embedding-3-small')
-                bad_list.append(float(np.dot(embedding.data[0].embedding, badscore.data[0].embedding)))
+                bad_list.append(round(float(np.dot(embedding.data[0].embedding, badscore.data[0].embedding)),3))
             # Report
             report(test_case, test_input, good_list, bad_list,response_content)
 if __name__ == "__main__":
