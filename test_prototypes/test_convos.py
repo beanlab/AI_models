@@ -25,35 +25,40 @@ class TestInput(TypedDict):
     model: str
     prompt: list[Message]
 
-def report(testcase,test_input,score_good,score_bad,response_content):
-    details = {
-    "Test case": testcase['messages'],
-    "Test input": test_input,
-    "Good examples input": testcase['good'],
-    "Score good": score_good,
-    "Bad examples input": testcase['bad'],  # Fix: Changed key to 'Bad examples input'
-    "Score bad": score_bad,
-    "Response": response_content
-}
+class reportType(TypedDict):
+    test_case:TestCase
+    test_input : TestInput
+    good_list: list[float]
+    bad_list: list[float]
+    response_content: str
+
+def report(report_list):
+    detail_list = []
+
+    for report_item in report_list:
+        details = {
+            "Test case": report_item["test_case"]['messages'],
+            "Test input": report_item["test_input"],
+            "Good examples input": report_item["test_case"]['good'],
+            "Score good": report_item['good_list'],
+            "Bad examples input": report_item["test_case"]['bad'],  # Fix: Changed key to 'Bad examples input'
+            "Score bad": report_item["bad_list"],
+            "Response": report_item["response_content"],
+            "Mean difference": round(mean(report_item["good_list"]) - mean(report_item["bad_list"]), 3),
+            "Max good": max(report_item["good_list"]),
+            "Max bad": max(report_item["bad_list"])
+        }
+        detail_list.append(details)
+
+        # Create the directory if it doesn't exist
     new_dir = Path("report/")
     new_dir.mkdir(exist_ok=True)
 
-# Write the dictionary to the file using json.dump
-    with open(f"report/{testcase['name']}{test_input['name']}_details.txt", "w") as f:
-        json.dump(details, f, indent=4)  # `indent=4` makes the JSON output more readable
-        f.write("\n")
+    # Write each report to a separate JSON file
+    filename = f"report/{report_item['test_input']['name']}_details.json"
+    with open(filename, "w") as f:
+        json.dump(detail_list, f, indent=4)
 
-    data = {
-        "Test case": testcase['messages'],
-        "Mean difference": round(mean(score_good) - mean(score_bad),3),
-        "Max good": max(score_good),
-        "Max bad": max(score_bad)
-    }
-
-    # Write the dictionary to the file using json.dump
-    with open(f"report/{testcase['name']}{test_input['name']}_simple.txt", "w") as f:
-        json.dump(data, f)
-        f.write("\n")
 
 
 
@@ -68,6 +73,7 @@ def main(test_input_file: Path, test_directory: Path):
         else:
             test_input: TestInput = json.loads(test_input_file.read_text())
     # Read test cases
+        report_list=[]
         for test_case_file in test_directory.glob('*.json'):
             good_list=[]
             bad_list=[]
@@ -92,7 +98,14 @@ def main(test_input_file: Path, test_directory: Path):
                 badscore=client.embeddings.create(input=bad,model='text-embedding-3-small')
                 bad_list.append(round(float(np.dot(embedding.data[0].embedding, badscore.data[0].embedding)),3))
             # Report
-            report(test_case, test_input, good_list, bad_list,response_content)
+            report_item = reportType(
+                test_case=test_case,
+                test_input=test_input,
+                good_list=good_list,
+                bad_list=bad_list,
+                response_content=response_content)
+            report_list.append(report_item)
+        report(report_list)
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("test_input", type=Path,nargs='?', default=Path('test_input'))

@@ -15,8 +15,63 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <style>
+        /* Modal container */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgba(0, 0, 0, 0.9); /* Dark overlay background */
+        }
+        
+        /* Modal content - full screen */
+        .modal-content {
+          background-color: #fefefe;
+          padding: 20px;
+          border: none;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow-y: auto; /* Scrollable if content exceeds height */
+          color: #333; /* Text color */
+        }
+        
+        .modal-content button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        }
+
+        .modal-content button:hover {
+        background-color: #0056b3;
+        }
+        </style>
 </head>
 <body>
+    <script>
+        function openModal(modalId) {
+          var modal = document.getElementById(modalId);
+          if (modal) {
+            modal.style.display = "block";
+          }
+        }
+        
+        function closeModal(modalId) {
+          var modal = document.getElementById(modalId);
+          if (modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
     <div class="centered-div"> <code>
         %%DATA%%
     </code>
