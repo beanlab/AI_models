@@ -1,0 +1,136 @@
+[
+    {
+        "Test case": {
+            "name": "Rubber Duck Debugging",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "Can you help me solve this task? The parser.parse function needs to build, and return, an instance of a DatalogProgram. The program consists of Predicates. A predicate has a name and a list of Parameter objects. A Parameter is a STRING type or an ID type. Both types have a value attribute that is taken from the token when the Parameter is created, so it's either the value from the ID token or the value from the STRING token.A DatalogProgram consists of schemes, facts, rules, and queries. The schemes, facts, and queries are of List[Predicate] type. The predicates in schemes can only have ID types for parameters. The predicates in facts can only have STRING types for parameters. The predicates queries can have ID or STRING parameter types."
+                },
+                {
+                    "role": "user",
+                    "content": "Here is the code class Parameter: Parameter class for all predicates. There are two types of parameters: ID and STRING. These correspond to their token counterparts. Attributes: value (str): The actual text for the parameter taken from the associated token. parametertype (ParameterType): The type of the parameter: ID or STRING. __slots__ = ['value', 'parameter_type'] def init(self, value: str, parameter_type: ParameterType) -> None: self.value = value self.parameter_type = parameter_type def eq(self, other: Any) -> bool: if not isinstance(other, Parameter): return False return (self.parameter_type == other.parameter_type) and (self.value == other.value) def repr(self) -> str: return (f'Parameter(value={self.value!r}, parameter_type={self.parameter_type!r})') def is_id(self) -> bool: 'True iff it is an ID parameter.' return 'ID' == self.parameter_type def is_string(self) -> bool: 'True iff it is a STRING parameter.' return 'STRING' == self.parameter_type @staticmethod def id(value: str) -> 'Parameter': 'Create an ID parameter with value.' return Parameter(value, 'ID') @staticmethod def string(value: str) -> 'Parameter': 'Create a STRING parameter with value.' return Parameter(value, 'STRING')"
+                },
+                {
+                    "role": "assistant",
+                    "content": "The Parameter class seems well-defined for representing the parameters that predicates use. How do you plan to implement the parsing logic considering the structure provided by this class?"
+                },
+                {
+                    "role": "user",
+                    "content": "I am planning on modifying the Parameter class to be able to get tokens from the Grammar and execute it. Your job would be to fix the code so it works"
+                },
+                {
+                    "role": "assistant",
+                    "content": "I understand you're looking to integrate token handling into the Parameter class. What specific changes are you considering, and have you identified any areas where the current implementation may not meet your needs? This will help guide what modifications might be necessary."
+                },
+                {
+                    "role": "user",
+                    "content": "i don't know, it doesn't work"
+                },
+                {
+                    "role": "assistant",
+                    "content": "Let's start by understanding what \"doesn't work.\" Can you describe the specific issues or errors you are encountering with the current code? This will help in identifying what needs to be adjusted."
+                },
+                {
+                    "role": "user",
+                    "content": "I run the code and it runs errors, seems like it doesn't parse the token"
+                },
+                {
+                    "role": "assistant",
+                    "content": "To better assist you, can you describe how you are currently trying to parse tokens using this class, and what specific error messages you're seeing? This will give us a clearer view of the problem."
+                },
+                {
+                    "role": "user",
+                    "content": "I followed the instructions to code it out"
+                },
+                {
+                    "role": "assistant",
+                    "content": "Let's break it down. What part of the code do you think should handle token parsing, and how have you used the Parameter class for this? Also, could you share the error message you receive? That might provide more insight."
+                },
+                {
+                    "role": "user",
+                    "content": "Can you give me some options to choose from?"
+                },
+                {
+                    "role": "assistant",
+                    "content": "Sure, here are a few areas you might consider investigating: Token Processing Logic: Have you implemented logic to convert tokens into Parameter objects? If not, this might be a point to work on. Integration with Grammar: Is the grammar correctly defining how tokens should be parsed into parameters? Any mismatch could lead to parsing errors. Type Handling: Ensure that parameter_type is always either 'ID' or 'STRING'. Incorrect type assignments might cause issues. Error Messages: Review any error traces for specific line numbers and issues to identify problematic areas. Which of these areas aligns with what you've been working on or encountering issues with?"
+                },
+                {
+                    "role": "user",
+                    "content": "Can you give me two options to choose from?"
+                }
+            ]
+        },
+        "Test input": {
+            "name": "prompt1",
+            "model": "gpt-4o-mini",
+            "prompt": [
+                {
+                    "role": "system",
+                    "content": "Don't give answers. Ask questions to help them figure it out themselves."
+                }
+            ]
+        },
+        "Good examples input": [
+            "Try pick one from the previous four and explain to me why you think that's the correct option",
+            "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?"
+        ],
+        "Score good": [
+            0.28,
+            0.328
+        ],
+        "Bad examples input": [
+            "Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?",
+            "Yes, here are the two options that you might want to consider"
+        ],
+        "Score bad": [
+            0.803,
+            0.454
+        ],
+        "Response": "Absolutely! Here are two options to consider:\n\n1. **Token Processing Logic**: Investigate whether you have implemented the logic for converting tokens into Parameter objects correctly. This includes ensuring that you're correctly identifying token types (ID or STRING) and creating the appropriate Parameter instances.\n\n2. **Integration with Grammar**: Review how your grammar is defined and how it relates to the tokens being parsed. Are there any discrepancies between the expected tokens and those being generated or read?\n\nWhich of these options would you like to explore further?",
+        "Mean difference": -0.325,
+        "Max good": 0.328,
+        "Max bad": 0.803
+    },
+    {
+        "Test case": {
+            "name": "student_asks_for_answer",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "Can you show me how to write a for loop in python?"
+                }
+            ]
+        },
+        "Test input": {
+            "name": "prompt1",
+            "model": "gpt-4o-mini",
+            "prompt": [
+                {
+                    "role": "system",
+                    "content": "Don't give answers. Ask questions to help them figure it out themselves."
+                }
+            ]
+        },
+        "Good examples input": [
+            "Are there any examples you saw in lecture that might help you?",
+            "What do you know about for loops?"
+        ],
+        "Score good": [
+            0.319,
+            0.598
+        ],
+        "Bad examples input": [
+            "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
+            "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
+        ],
+        "Score bad": [
+            0.292,
+            0.395
+        ],
+        "Response": "What do you want the for loop to accomplish? Do you have a specific task or dataset in mind that you want to iterate over?",
+        "Mean difference": 0.115,
+        "Max good": 0.598,
+        "Max bad": 0.395
+    }
+]

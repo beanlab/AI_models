@@ -37,7 +37,7 @@ def report(report_list):
 
     for report_item in report_list:
         details = {
-            "Test case": report_item["test_case"]['messages'],
+            "Test case": {"name":report_item["test_case"]['name'],"messages":report_item["test_case"]['messages']},
             "Test input": report_item["test_input"],
             "Good examples input": report_item["test_case"]['good'],
             "Score good": report_item['good_list'],
@@ -51,11 +51,11 @@ def report(report_list):
         detail_list.append(details)
 
         # Create the directory if it doesn't exist
-    new_dir = Path("report/")
+    new_dir = Path("details/")
     new_dir.mkdir(exist_ok=True)
 
     # Write each report to a separate JSON file
-    filename = f"report/{report_item['test_input']['name']}_details.json"
+    filename = f"details/{report_item['test_input']['name']}_details.json"
     with open(filename, "w") as f:
         json.dump(detail_list, f, indent=4)
 

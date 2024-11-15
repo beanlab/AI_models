@@ -3,19 +3,19 @@ import matplotlib.pyplot as plt
 import io
 import json
 def render_result(detail_report) -> str:
-    name = detail_report['Test case'][0]["content"]
+    html = 
+    name = detail_report['Test case']["name"]
+    html += f"<h2>{name}</h2>"
     good_examples_html = ''.join([f"<p>{i+1}: {detail_report['Good examples input'][i]}</p>" for i in range(len(detail_report['Good examples input']))])
     bad_examples_html = ''.join([f"<p>{len(detail_report['Good examples input'])+i+1}: {detail_report['Bad examples input'][i]}</p>" for i in range(len(detail_report['Bad examples input']))])
-    return f"""\
-    <div class="test-result">
-    <h3>{name}</h3>
-    <h4>Good Examples:</h4>
-        {good_examples_html}
-    <h4>Bad Examples:</h4>
-        {bad_examples_html}
-    <p> AI Response: {detail_report['Response']} </p>
-    </div>
-    """
+    for good_input in detail_report['Good examples input']:
+        good_examples_html += f"<p>{good_input}</p>"
+    
+
+
+
+
+    
 def generate_svg(name,  good,bad) -> str:
     plt.figure()
     num_good = list(range(1,len(good)+1))
@@ -45,10 +45,10 @@ def main(template_file: Path, report_file: Path):
     template_string = template_file.read_text()
     overall_report_list={}
     name =set()
-    for test_case_file in report_file.glob('*'):
+    for test_case_file in report_file.glob('*.json'):
         with open(test_case_file, 'r') as file:
             test_details = json.load(file)
-        new_dir = Path(f"scratch/{test_details[0]['Test input']['name']}")
+        new_dir = Path(f"report_summary/{test_details[0]['Test input']['name']}")
         new_dir.mkdir(exist_ok=True)
         file_path = Path(f'{new_dir}/report.html')
         html_string = ""
@@ -56,9 +56,9 @@ def main(template_file: Path, report_file: Path):
         overall_report_list[test_details[0]['Test input']['name']] =[]
         for each_test_detail in test_details:
             i+=1
-            name.add(each_test_detail['Test case'][0]["content"])
+            name.add(each_test_detail['Test case']['name'])
             detail_info = render_result(each_test_detail)
-            svg_b64 = generate_svg(each_test_detail['Test case'][0]["content"],each_test_detail['Score good'], each_test_detail['Score bad'])
+            svg_b64 = generate_svg(each_test_detail['Test case']['name'],each_test_detail['Score good'], each_test_detail['Score bad'])
             html = f"""
             <div class="test-result">
 
@@ -69,7 +69,7 @@ def main(template_file: Path, report_file: Path):
             <h2> Mean difference:
             {each_test_detail['Mean difference']}
             </h2>
-            <p>{each_test_detail['Test case'][0]["content"]}</p>
+            <p>{each_test_detail['Test case']['name']}</p>
             <p>{each_test_detail['Test input']['name']}</p>
             <img data="data:base64{svg_b64}
 
@@ -106,6 +106,6 @@ def make_overview(test_details,test_name):
 
 
 if __name__ == '__main__':
-    template = Path('scratch/template.html')
-    report = Path('report')
+    template = Path('report_summary/template.html')
+    report = Path('details')
     main(template, report)
