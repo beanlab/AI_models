@@ -3,13 +3,49 @@ import matplotlib.pyplot as plt
 import io
 import json
 def render_result(detail_report) -> str:
-    html = 
+    # Extract the test case name
     name = detail_report['Test case']["name"]
-    html += f"<h2>{name}</h2>"
-    good_examples_html = ''.join([f"<p>{i+1}: {detail_report['Good examples input'][i]}</p>" for i in range(len(detail_report['Good examples input']))])
-    bad_examples_html = ''.join([f"<p>{len(detail_report['Good examples input'])+i+1}: {detail_report['Bad examples input'][i]}</p>" for i in range(len(detail_report['Bad examples input']))])
-    for good_input in detail_report['Good examples input']:
-        good_examples_html += f"<p>{good_input}</p>"
+
+    # Initialize HTML with the summary and title
+    html = f"""
+        <summary>
+            <h2>Title: {name}</h2>
+        <section>
+            <h3>Good Examples</h3>
+            <ul>
+    """
+    # Add Good Examples
+    for i, example in enumerate(detail_report["Good examples input"], start=1):
+        code_block = example.replace("\n", "<br>")
+        html += f"            <li>{i}: {code_block}</li>\n"
+
+    # Start Bad Examples Section
+    html += """
+            </ul>
+        </section>
+        <section>
+            <h3>Bad Examples</h3>
+            <ul>
+    """
+    # Add Bad Examples with Code Blocks
+    for i, example in enumerate(detail_report["Bad examples input"], start=1):
+        code_block = example.replace("\n", "<br>")  # Replace newlines for HTML rendering
+        html += f"""            <li>{i}: {code_block}</li>\n"""
+
+    # Add AI Response Section
+    html += """
+            </ul>
+        </section>
+        <section>
+            <h3>AI Response</h3>
+            <p>What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind? </p><br>
+            <p>\n\n\n \n \n \n </p>
+        </section>
+    </summary>
+    """
+
+    print(html)
+    return html
     
 
 
@@ -61,30 +97,18 @@ def main(template_file: Path, report_file: Path):
             svg_b64 = generate_svg(each_test_detail['Test case']['name'],each_test_detail['Score good'], each_test_detail['Score bad'])
             html = f"""
             <div class="test-result">
+                <h2>Max good - Max bad: {round(each_test_detail['Max good'] - each_test_detail['Max bad'], 3)}</h2>
+                <h2>Mean difference: {each_test_detail['Mean difference']}</h2>
+                <p><strong>Test Case:</strong> {each_test_detail['Test case']['name']}</p>
+                <p><strong>Input Name:</strong> {each_test_detail['Test input']['name']}</p>
+                <img data="data:base64{svg_b64}
 
-            <h2> Max good - Max bad:
-            {round(each_test_detail['Max good']-each_test_detail['Max bad'],3)}
-            </h2>
+                <!-- Toggle Details Button -->
+                <button onclick="toggleDetails('details-{each_test_detail['Test input']['name']}-{i}')">Show Details</button>
 
-            <h2> Mean difference:
-            {each_test_detail['Mean difference']}
-            </h2>
-            <p>{each_test_detail['Test case']['name']}</p>
-            <p>{each_test_detail['Test input']['name']}</p>
-            <img data="data:base64{svg_b64}
-
-            <!-- Trigger button -->
-                <button onclick="openModal('modal-{each_test_detail['Test input']['name'] }-{ i }')">Show Details</button>
-
-                <!-- The Modal -->
-                <div id="modal-{ each_test_detail['Test input']['name'] }-{ i }" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <pre><code class="language-markdown">
-                    { detail_info }
-                    </code></pre>
-                <button onclick="closeModal('modal-{ each_test_detail['Test input']['name'] }-{ i }')" style="margin-top: 20px; padding: 10px 20px; font-size: 16px;">Close</button>
-                </div>
+                <!-- Collapsible Details Section -->
+                <div id="details-{each_test_detail['Test input']['name']}-{i}" class="details" style="display: none;">
+                    {detail_info}
                 </div>
             </div>
             """
@@ -93,13 +117,13 @@ def main(template_file: Path, report_file: Path):
         html_content = template_string.replace('%%DATA%%', html_string)
         with file_path.open("w") as file:
             file.write(html_content)
-    make_overview(overall_report_list,name)
+    # make_overview(overall_report_list,name)
 
-def make_overview(test_details,test_name):
-    x_values = [prompt for prompt in test_details.values()]
-    for i in test_name:
-        plt.plot(x_values[i], label=i)
-    plt.figure(figsize=(10, 6))
+# def make_overview(test_details,test_name):
+#     x_values = [prompt for prompt in test_details.values()]
+#     for i in test_name:
+#         plt.plot(x_values[i], label=i)
+#     plt.figure(figsize=(10, 6))
 
 
     

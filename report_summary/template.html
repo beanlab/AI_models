@@ -4,74 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centered Content</title>
-    <style>
-        .centered-div {
-            width: 60ch;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-    </style>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    <style>
-        /* Modal container */
-        .modal {
-          display: none; /* Hidden by default */
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Sit on top */
-          left: 0;
-          top: 0;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow: auto; /* Enable scroll if needed */
-          background-color: rgba(0, 0, 0, 0.9); /* Dark overlay background */
-        }
-        
-        /* Modal content - full screen */
-        .modal-content {
-          background-color: #fefefe;
-          padding: 20px;
-          border: none;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow-y: auto; /* Scrollable if content exceeds height */
-          color: #333; /* Text color */
-        }
-        
-        .modal-content button {
-        background-color: #007bff;
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+    }
+
+    .test-result {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .test-result h2 {
+        margin: 5px 0;
+    }
+
+    .test-result img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+    }
+
+    .test-result button {
+        background-color: #0056b3;
         color: white;
+        padding: 10px 15px;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
         border-radius: 5px;
         cursor: pointer;
-        margin-top: 20px;
-        }
+        margin-top: 10px;
+    }
 
-        .modal-content button:hover {
-        background-color: #0056b3;
-        }
-        </style>
+    .test-result button:hover {
+        background-color: #004494;
+    }
+
+    .details {
+        margin-top: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
 </head>
 <body>
     <script>
-        function openModal(modalId) {
-          var modal = document.getElementById(modalId);
-          if (modal) {
-            modal.style.display = "block";
-          }
+        function toggleDetails(detailsId) {
+        const details = document.getElementById(detailsId);
+        if (details) {
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
         }
-        
-        function closeModal(modalId) {
-          var modal = document.getElementById(modalId);
-          if (modal) {
-            modal.style.display = "none";
-          }
-        }
+    }
         </script>
+    </div>
     <div class="centered-div"> <code>
         %%DATA%%
     </code>

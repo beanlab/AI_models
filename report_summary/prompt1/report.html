@@ -4,88 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Centered Content</title>
-    <style>
-        .centered-div {
-            width: 60ch;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-    </style>
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-    <style>
-        /* Modal container */
-        .modal {
-          display: none; /* Hidden by default */
-          position: fixed; /* Stay in place */
-          z-index: 1; /* Sit on top */
-          left: 0;
-          top: 0;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow: auto; /* Enable scroll if needed */
-          background-color: rgba(0, 0, 0, 0.9); /* Dark overlay background */
-        }
-        
-        /* Modal content - full screen */
-        .modal-content {
-          background-color: #fefefe;
-          padding: 20px;
-          border: none;
-          width: 100%; /* Full width */
-          height: 100%; /* Full height */
-          overflow-y: auto; /* Scrollable if content exceeds height */
-          color: #333; /* Text color */
-        }
-        
-        .modal-content button {
-        background-color: #007bff;
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+    }
+
+    .test-result {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .test-result h2 {
+        margin: 5px 0;
+    }
+
+    .test-result img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+    }
+
+    .test-result button {
+        background-color: #0056b3;
         color: white;
+        padding: 10px 15px;
         border: none;
-        padding: 10px 20px;
-        font-size: 16px;
         border-radius: 5px;
         cursor: pointer;
-        margin-top: 20px;
-        }
+        margin-top: 10px;
+    }
 
-        .modal-content button:hover {
-        background-color: #0056b3;
-        }
-        </style>
+    .test-result button:hover {
+        background-color: #004494;
+    }
+
+    .details {
+        margin-top: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+</style>
 </head>
 <body>
     <script>
-        function openModal(modalId) {
-          var modal = document.getElementById(modalId);
-          if (modal) {
-            modal.style.display = "block";
-          }
+        function toggleDetails(detailsId) {
+        const details = document.getElementById(detailsId);
+        if (details) {
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
         }
-        
-        function closeModal(modalId) {
-          var modal = document.getElementById(modalId);
-          if (modal) {
-            modal.style.display = "none";
-          }
-        }
+    }
         </script>
+    </div>
     <div class="centered-div"> <code>
         
             <div class="test-result">
-
-            <h2> Max good - Max bad:
-            -0.426
-            </h2>
-
-            <h2> Mean difference:
-            -0.282
-            </h2>
-            <p>Can you help me solve this task? The parser.parse function needs to build, and return, an instance of a DatalogProgram. The program consists of Predicates. A predicate has a name and a list of Parameter objects. A Parameter is a STRING type or an ID type. Both types have a value attribute that is taken from the token when the Parameter is created, so it's either the value from the ID token or the value from the STRING token.A DatalogProgram consists of schemes, facts, rules, and queries. The schemes, facts, and queries are of List[Predicate] type. The predicates in schemes can only have ID types for parameters. The predicates in facts can only have STRING types for parameters. The predicates queries can have ID or STRING parameter types.</p>
-            <p>prompt1</p>
-            <img data="data:base64<?xml version="1.0" encoding="utf-8" standalone="no"?>
+                <h2>Max good - Max bad: -0.462</h2>
+                <h2>Mean difference: -0.311</h2>
+                <p><strong>Test Case:</strong> Rubber Duck Debugging</p>
+                <p><strong>Input Name:</strong> prompt1</p>
+                <img data="data:base64<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="345.6pt" viewBox="0 0 460.8 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -93,7 +86,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2024-11-11T09:11:55.914947</dc:date>
+    <dc:date>2024-11-18T08:35:29.296800</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -126,7 +119,7 @@ z
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="m49f852ef06" d="M 0 3 
+     <path id="m35711c6103" d="M 0 3 
 C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
 C 2.683901 1.55874 3 0.795609 3 0 
 C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
@@ -138,27 +131,27 @@ C -1.55874 2.683901 -0.795609 3 0 3
 z
 " style="stroke: #008000"/>
     </defs>
-    <g clip-path="url(#p907e174944)">
-     <use xlink:href="#m49f852ef06" x="73.832727" y="295.488" style="fill: #008000; stroke: #008000"/>
-     <use xlink:href="#m49f852ef06" x="182.050909" y="262.610434" style="fill: #008000; stroke: #008000"/>
+    <g clip-path="url(#p44963eeba3)">
+     <use xlink:href="#m35711c6103" x="73.832727" y="295.488" style="fill: #008000; stroke: #008000"/>
+     <use xlink:href="#m35711c6103" x="182.050909" y="268.504615" style="fill: #008000; stroke: #008000"/>
     </g>
    </g>
    <g id="PathCollection_2">
     <defs>
-     <path id="m4b4d1eef96" d="M -3 3 
+     <path id="m406ca51746" d="M -3 3 
 L 3 -3 
 M -3 -3 
 L 3 3 
 " style="stroke: #ff0000; stroke-width: 1.5"/>
     </defs>
-    <g clip-path="url(#p907e174944)">
-     <use xlink:href="#m4b4d1eef96" x="290.269091" y="53.568" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
-     <use xlink:href="#m4b4d1eef96" x="398.487273" y="227.279318" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
+    <g clip-path="url(#p44963eeba3)">
+     <use xlink:href="#m406ca51746" x="290.269091" y="53.568" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
+     <use xlink:href="#m406ca51746" x="398.487273" y="221.051077" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
     </g>
    </g>
    <g id="PathCollection_3">
     <defs>
-     <path id="mc252519200" d="M 0 7.071068 
+     <path id="m17e3d62dfc" d="M 0 7.071068 
 C 1.875269 7.071068 3.673985 6.326016 5 5 
 C 6.326016 3.673985 7.071068 1.875269 7.071068 0 
 C 7.071068 -1.875269 6.326016 -3.673985 5 -5 
@@ -170,13 +163,13 @@ C -3.673985 6.326016 -1.875269 7.071068 0 7.071068
 z
 " style="stroke: #000000; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p907e174944)">
-     <use xlink:href="#mc252519200" x="182.050909" y="262.610434" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
+    <g clip-path="url(#p44963eeba3)">
+     <use xlink:href="#m17e3d62dfc" x="182.050909" y="268.504615" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
     </g>
    </g>
    <g id="PathCollection_4">
     <defs>
-     <path id="m0bf8898cfe" d="M 0 7.071068 
+     <path id="m78706a64fb" d="M 0 7.071068 
 C 1.875269 7.071068 3.673985 6.326016 5 5 
 C 6.326016 3.673985 7.071068 1.875269 7.071068 0 
 C 7.071068 -1.875269 6.326016 -3.673985 5 -5 
@@ -188,20 +181,20 @@ C -3.673985 6.326016 -1.875269 7.071068 0 7.071068
 z
 " style="stroke: #000000; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p907e174944)">
-     <use xlink:href="#m0bf8898cfe" x="290.269091" y="53.568" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
+    <g clip-path="url(#p44963eeba3)">
+     <use xlink:href="#m78706a64fb" x="290.269091" y="53.568" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
     </g>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="mf0f9f86ad8" d="M 0 0 
+       <path id="m63602ed0f3" d="M 0 0 
 L 0 3.5 
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#mf0f9f86ad8" x="73.832727" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m63602ed0f3" x="73.832727" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
@@ -230,7 +223,7 @@ z
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#mf0f9f86ad8" x="182.050909" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m63602ed0f3" x="182.050909" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
@@ -269,7 +262,7 @@ z
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#mf0f9f86ad8" x="290.269091" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m63602ed0f3" x="290.269091" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
@@ -316,7 +309,7 @@ z
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#mf0f9f86ad8" x="398.487273" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m63602ed0f3" x="398.487273" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
@@ -549,17 +542,17 @@ z
     <g id="ytick_1">
      <g id="line2d_5">
       <defs>
-       <path id="mbbf2bf3538" d="M 0 0 
+       <path id="md625c6de67" d="M 0 0 
 L -3.5 0 
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#mbbf2bf3538" x="57.6" y="287.145931" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md625c6de67" x="57.6" y="287.113846" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
       <!-- 0.3 -->
-      <g transform="translate(34.696875 290.94515) scale(0.1 -0.1)">
+      <g transform="translate(34.696875 290.913065) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-30" d="M 2034 4250 
 Q 1547 4250 1301 3770 
@@ -599,12 +592,12 @@ z
     <g id="ytick_2">
      <g id="line2d_6">
       <g>
-       <use xlink:href="#mbbf2bf3538" x="57.6" y="238.074937" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md625c6de67" x="57.6" y="240.590769" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_7">
       <!-- 0.4 -->
-      <g transform="translate(34.696875 241.874156) scale(0.1 -0.1)">
+      <g transform="translate(34.696875 244.389988) scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-30"/>
        <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
        <use xlink:href="#DejaVuSans-34" x="95.410156"/>
@@ -614,12 +607,12 @@ z
     <g id="ytick_3">
      <g id="line2d_7">
       <g>
-       <use xlink:href="#mbbf2bf3538" x="57.6" y="189.003943" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md625c6de67" x="57.6" y="194.067692" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_8">
       <!-- 0.5 -->
-      <g transform="translate(34.696875 192.803162) scale(0.1 -0.1)">
+      <g transform="translate(34.696875 197.866911) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-35" d="M 691 4666 
 L 3169 4666 
@@ -656,12 +649,12 @@ z
     <g id="ytick_4">
      <g id="line2d_8">
       <g>
-       <use xlink:href="#mbbf2bf3538" x="57.6" y="139.932949" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md625c6de67" x="57.6" y="147.544615" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_9">
       <!-- 0.6 -->
-      <g transform="translate(34.696875 143.732168) scale(0.1 -0.1)">
+      <g transform="translate(34.696875 151.343834) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-36" d="M 2113 2584 
 Q 1688 2584 1439 2293 
@@ -703,12 +696,12 @@ z
     <g id="ytick_5">
      <g id="line2d_9">
       <g>
-       <use xlink:href="#mbbf2bf3538" x="57.6" y="90.861955" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md625c6de67" x="57.6" y="101.021538" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_10">
       <!-- 0.7 -->
-      <g transform="translate(34.696875 94.661174) scale(0.1 -0.1)">
+      <g transform="translate(34.696875 104.820757) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-37" d="M 525 4666 
 L 3525 4666 
@@ -730,12 +723,12 @@ z
     <g id="ytick_6">
      <g id="line2d_10">
       <g>
-       <use xlink:href="#mbbf2bf3538" x="57.6" y="41.790961" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#md625c6de67" x="57.6" y="54.498462" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_11">
       <!-- 0.8 -->
-      <g transform="translate(34.696875 45.59018) scale(0.1 -0.1)">
+      <g transform="translate(34.696875 58.29768) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-38" d="M 2034 2216 
 Q 1584 2216 1326 1975 
@@ -922,7 +915,7 @@ z
     </g>
     <g id="PathCollection_5">
      <g>
-      <use xlink:href="#m49f852ef06" x="324.993438" y="55.445438" style="fill: #008000; stroke: #008000"/>
+      <use xlink:href="#m35711c6103" x="324.993438" y="55.445438" style="fill: #008000; stroke: #008000"/>
      </g>
     </g>
     <g id="text_13">
@@ -997,7 +990,7 @@ z
     </g>
     <g id="PathCollection_6">
      <g>
-      <use xlink:href="#m4b4d1eef96" x="324.993438" y="70.123563" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
+      <use xlink:href="#m406ca51746" x="324.993438" y="70.123563" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
      </g>
     </g>
     <g id="text_14">
@@ -1051,7 +1044,7 @@ z
     </g>
     <g id="PathCollection_7">
      <g>
-      <use xlink:href="#mc252519200" x="324.993438" y="84.801688" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
+      <use xlink:href="#m17e3d62dfc" x="324.993438" y="84.801688" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
      </g>
     </g>
     <g id="text_15">
@@ -1087,7 +1080,7 @@ z
     </g>
     <g id="PathCollection_8">
      <g>
-      <use xlink:href="#m0bf8898cfe" x="324.993438" y="99.479813" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
+      <use xlink:href="#m78706a64fb" x="324.993438" y="99.479813" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
      </g>
     </g>
     <g id="text_16">
@@ -1106,54 +1099,59 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p907e174944">
+  <clipPath id="p44963eeba3">
    <rect x="57.6" y="41.472" width="357.12" height="266.112"/>
   </clipPath>
  </defs>
 </svg>
 
 
-            <!-- Trigger button -->
-                <button onclick="openModal('modal-prompt1-1')">Show Details</button>
+                <!-- Toggle Details Button -->
+                <button onclick="toggleDetails('details-prompt1-1')">Show Details</button>
 
-                <!-- The Modal -->
-                <div id="modal-prompt1-1" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <pre><code class="language-markdown">
-                        <div class="test-result">
-    <h3>Can you help me solve this task? The parser.parse function needs to build, and return, an instance of a DatalogProgram. The program consists of Predicates. A predicate has a name and a list of Parameter objects. A Parameter is a STRING type or an ID type. Both types have a value attribute that is taken from the token when the Parameter is created, so it's either the value from the ID token or the value from the STRING token.A DatalogProgram consists of schemes, facts, rules, and queries. The schemes, facts, and queries are of List[Predicate] type. The predicates in schemes can only have ID types for parameters. The predicates in facts can only have STRING types for parameters. The predicates queries can have ID or STRING parameter types.</h3>
-    <h4>Good Examples:</h4>
-        <p>1: Try pick one from the previous four and explain to me why you think that's the correct option</p><p>2: I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?</p>
-    <h4>Bad Examples:</h4>
-        <p>3: Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?</p><p>4: Yes, here are the two options that you might want to consider</p>
-    <p> AI Response: Absolutely! Here are two options:
+                <!-- Collapsible Details Section -->
+                <div id="details-prompt1-1" class="details" style="display: none;">
+                    
+        <summary>
+            <h2>Title: Rubber Duck Debugging</h2>
+        <section>
+            <h3>Good Examples</h3>
+            <ul>
+                <li>1: Try pick one from the previous four and explain to me why you think that's the correct option</li>
+            <li>2: I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?</li>
 
-1. **Token Processing Logic**: Focus on how tokens are being converted into Parameter objects. Have you written a function that takes a token and creates a Parameter using `Parameter.id()` or `Parameter.string()`?
+            </ul>
+        </section>
+        <section>
+            <h3>Bad Examples</h3>
+            <ul>
+                <li>1: Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?</li>
+            <li>2: Yes, here are the two options that you might want to consider</li>
 
-2. **Integration with Grammar**: Check how your grammar is structured to identify the tokens. Is there a specific grammar rule that you're unsure is correctly defined to parse the input?
+            </ul>
+        </section>
+        <section>
+            <h3>AI Response</h3>
+            <p>What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind? </p><br>
+            <p>
 
-Which of these options would you like to explore further? </p>
-    </div>
+
+ 
+ 
+ 
+ </p>
+        </section>
+    </summary>
     
-                    </code></pre>
-                <button onclick="closeModal('modal-prompt1-1')" style="margin-top: 20px; padding: 10px 20px; font-size: 16px;">Close</button>
-                </div>
                 </div>
             </div>
             
             <div class="test-result">
-
-            <h2> Max good - Max bad:
-            0.223
-            </h2>
-
-            <h2> Mean difference:
-            0.094
-            </h2>
-            <p>Can you show me how to write a for loop in python?</p>
-            <p>prompt1</p>
-            <img data="data:base64<?xml version="1.0" encoding="utf-8" standalone="no"?>
+                <h2>Max good - Max bad: 0.218</h2>
+                <h2>Mean difference: 0.089</h2>
+                <p><strong>Test Case:</strong> student_asks_for_answer</p>
+                <p><strong>Input Name:</strong> prompt1</p>
+                <img data="data:base64<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
   "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns:xlink="http://www.w3.org/1999/xlink" width="460.8pt" height="345.6pt" viewBox="0 0 460.8 345.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -1161,7 +1159,7 @@ Which of these options would you like to explore further? </p>
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2024-11-11T09:11:55.950850</dc:date>
+    <dc:date>2024-11-18T08:35:29.333735</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1194,7 +1192,7 @@ z
    </g>
    <g id="PathCollection_1">
     <defs>
-     <path id="mda3ceb7368" d="M 0 3 
+     <path id="m8aa194c31f" d="M 0 3 
 C 0.795609 3 1.55874 2.683901 2.12132 2.12132 
 C 2.683901 1.55874 3 0.795609 3 0 
 C 3 -0.795609 2.683901 -1.55874 2.12132 -2.12132 
@@ -1206,27 +1204,27 @@ C -1.55874 2.683901 -0.795609 3 0 3
 z
 " style="stroke: #008000"/>
     </defs>
-    <g clip-path="url(#p09a12d2d0f)">
-     <use xlink:href="#mda3ceb7368" x="73.832727" y="295.488" style="fill: #008000; stroke: #008000"/>
-     <use xlink:href="#mda3ceb7368" x="182.050909" y="53.568" style="fill: #008000; stroke: #008000"/>
+    <g clip-path="url(#pb6a380ada9)">
+     <use xlink:href="#m8aa194c31f" x="73.832727" y="295.488" style="fill: #008000; stroke: #008000"/>
+     <use xlink:href="#m8aa194c31f" x="182.050909" y="53.568" style="fill: #008000; stroke: #008000"/>
     </g>
    </g>
    <g id="PathCollection_2">
     <defs>
-     <path id="md7fbb023af" d="M -3 3 
+     <path id="m753d67d975" d="M -3 3 
 L 3 -3 
 M -3 -3 
 L 3 3 
 " style="stroke: #ff0000; stroke-width: 1.5"/>
     </defs>
-    <g clip-path="url(#p09a12d2d0f)">
-     <use xlink:href="#md7fbb023af" x="290.269091" y="274.266947" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
-     <use xlink:href="#md7fbb023af" x="398.487273" y="188.776421" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
+    <g clip-path="url(#pb6a380ada9)">
+     <use xlink:href="#m753d67d975" x="290.269091" y="271.174432" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
+     <use xlink:href="#m753d67d975" x="398.487273" y="186.076945" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
     </g>
    </g>
    <g id="PathCollection_3">
     <defs>
-     <path id="m67733acfe1" d="M 0 7.071068 
+     <path id="m0be4f20231" d="M 0 7.071068 
 C 1.875269 7.071068 3.673985 6.326016 5 5 
 C 6.326016 3.673985 7.071068 1.875269 7.071068 0 
 C 7.071068 -1.875269 6.326016 -3.673985 5 -5 
@@ -1238,13 +1236,13 @@ C -3.673985 6.326016 -1.875269 7.071068 0 7.071068
 z
 " style="stroke: #000000; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p09a12d2d0f)">
-     <use xlink:href="#m67733acfe1" x="182.050909" y="53.568" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
+    <g clip-path="url(#pb6a380ada9)">
+     <use xlink:href="#m0be4f20231" x="182.050909" y="53.568" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
     </g>
    </g>
    <g id="PathCollection_4">
     <defs>
-     <path id="mc2385ea82e" d="M 0 7.071068 
+     <path id="m4a5c8b696f" d="M 0 7.071068 
 C 1.875269 7.071068 3.673985 6.326016 5 5 
 C 6.326016 3.673985 7.071068 1.875269 7.071068 0 
 C 7.071068 -1.875269 6.326016 -3.673985 5 -5 
@@ -1256,20 +1254,20 @@ C -3.673985 6.326016 -1.875269 7.071068 0 7.071068
 z
 " style="stroke: #000000; stroke-width: 2"/>
     </defs>
-    <g clip-path="url(#p09a12d2d0f)">
-     <use xlink:href="#mc2385ea82e" x="398.487273" y="188.776421" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
+    <g clip-path="url(#pb6a380ada9)">
+     <use xlink:href="#m4a5c8b696f" x="398.487273" y="186.076945" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
     </g>
    </g>
    <g id="matplotlib.axis_1">
     <g id="xtick_1">
      <g id="line2d_1">
       <defs>
-       <path id="m8c2e8be9fd" d="M 0 0 
+       <path id="m891aa8496a" d="M 0 0 
 L 0 3.5 
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m8c2e8be9fd" x="73.832727" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m891aa8496a" x="73.832727" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_1">
@@ -1298,7 +1296,7 @@ z
     <g id="xtick_2">
      <g id="line2d_2">
       <g>
-       <use xlink:href="#m8c2e8be9fd" x="182.050909" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m891aa8496a" x="182.050909" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_2">
@@ -1337,7 +1335,7 @@ z
     <g id="xtick_3">
      <g id="line2d_3">
       <g>
-       <use xlink:href="#m8c2e8be9fd" x="290.269091" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m891aa8496a" x="290.269091" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_3">
@@ -1384,7 +1382,7 @@ z
     <g id="xtick_4">
      <g id="line2d_4">
       <g>
-       <use xlink:href="#m8c2e8be9fd" x="398.487273" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m891aa8496a" x="398.487273" y="307.584" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_4">
@@ -1617,17 +1615,17 @@ z
     <g id="ytick_1">
      <g id="line2d_5">
       <defs>
-       <path id="m41d47fb948" d="M 0 0 
+       <path id="m7c8b1a0ac8" d="M 0 0 
 L -3.5 0 
 " style="stroke: #000000; stroke-width: 0.8"/>
       </defs>
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="286.393263" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="289.409608" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_6">
       <!-- 0.30 -->
-      <g transform="translate(28.334375 290.192482) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 293.208827) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-30" d="M 2034 4250 
 Q 1547 4250 1301 3770 
@@ -1668,12 +1666,12 @@ z
     <g id="ytick_2">
      <g id="line2d_6">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="256.077474" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="259.017648" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_7">
       <!-- 0.35 -->
-      <g transform="translate(28.334375 259.876692) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 262.816867) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-35" d="M 691 4666 
 L 3169 4666 
@@ -1711,12 +1709,12 @@ z
     <g id="ytick_3">
      <g id="line2d_7">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="225.761684" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="228.625688" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_8">
       <!-- 0.40 -->
-      <g transform="translate(28.334375 229.560903) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 232.424907) scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-30"/>
        <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
        <use xlink:href="#DejaVuSans-34" x="95.410156"/>
@@ -1727,12 +1725,12 @@ z
     <g id="ytick_4">
      <g id="line2d_8">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="195.445895" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="198.233729" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_9">
       <!-- 0.45 -->
-      <g transform="translate(28.334375 199.245113) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 202.032947) scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-30"/>
        <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
        <use xlink:href="#DejaVuSans-34" x="95.410156"/>
@@ -1743,12 +1741,12 @@ z
     <g id="ytick_5">
      <g id="line2d_9">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="165.130105" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="167.841769" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_10">
       <!-- 0.50 -->
-      <g transform="translate(28.334375 168.929324) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 171.640988) scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-30"/>
        <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
        <use xlink:href="#DejaVuSans-35" x="95.410156"/>
@@ -1759,12 +1757,12 @@ z
     <g id="ytick_6">
      <g id="line2d_10">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="134.814316" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="137.449809" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_11">
       <!-- 0.55 -->
-      <g transform="translate(28.334375 138.613535) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 141.249028) scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-30"/>
        <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
        <use xlink:href="#DejaVuSans-35" x="95.410156"/>
@@ -1775,12 +1773,12 @@ z
     <g id="ytick_7">
      <g id="line2d_11">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="104.498526" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="107.057849" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_12">
       <!-- 0.60 -->
-      <g transform="translate(28.334375 108.297745) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 110.857068) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-36" d="M 2113 2584 
 Q 1688 2584 1439 2293 
@@ -1823,12 +1821,12 @@ z
     <g id="ytick_8">
      <g id="line2d_12">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="74.182737" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="76.665889" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_13">
       <!-- 0.65 -->
-      <g transform="translate(28.334375 77.981956) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 80.465108) scale(0.1 -0.1)">
        <use xlink:href="#DejaVuSans-30"/>
        <use xlink:href="#DejaVuSans-2e" x="63.623047"/>
        <use xlink:href="#DejaVuSans-36" x="95.410156"/>
@@ -1839,12 +1837,12 @@ z
     <g id="ytick_9">
      <g id="line2d_13">
       <g>
-       <use xlink:href="#m41d47fb948" x="57.6" y="43.866947" style="stroke: #000000; stroke-width: 0.8"/>
+       <use xlink:href="#m7c8b1a0ac8" x="57.6" y="46.27393" style="stroke: #000000; stroke-width: 0.8"/>
       </g>
      </g>
      <g id="text_14">
       <!-- 0.70 -->
-      <g transform="translate(28.334375 47.666166) scale(0.1 -0.1)">
+      <g transform="translate(28.334375 50.073148) scale(0.1 -0.1)">
        <defs>
         <path id="DejaVuSans-37" d="M 525 4666 
 L 3525 4666 
@@ -2003,7 +2001,7 @@ z
     </g>
     <g id="PathCollection_5">
      <g>
-      <use xlink:href="#mda3ceb7368" x="324.993438" y="55.445438" style="fill: #008000; stroke: #008000"/>
+      <use xlink:href="#m8aa194c31f" x="324.993438" y="55.445438" style="fill: #008000; stroke: #008000"/>
      </g>
     </g>
     <g id="text_16">
@@ -2078,7 +2076,7 @@ z
     </g>
     <g id="PathCollection_6">
      <g>
-      <use xlink:href="#md7fbb023af" x="324.993438" y="70.123563" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
+      <use xlink:href="#m753d67d975" x="324.993438" y="70.123563" style="fill: #ff0000; stroke: #ff0000; stroke-width: 1.5"/>
      </g>
     </g>
     <g id="text_17">
@@ -2132,7 +2130,7 @@ z
     </g>
     <g id="PathCollection_7">
      <g>
-      <use xlink:href="#m67733acfe1" x="324.993438" y="84.801688" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
+      <use xlink:href="#m0be4f20231" x="324.993438" y="84.801688" style="fill: #008000; stroke: #000000; stroke-width: 2"/>
      </g>
     </g>
     <g id="text_18">
@@ -2168,7 +2166,7 @@ z
     </g>
     <g id="PathCollection_8">
      <g>
-      <use xlink:href="#mc2385ea82e" x="324.993438" y="99.479813" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
+      <use xlink:href="#m4a5c8b696f" x="324.993438" y="99.479813" style="fill: #ff0000; stroke: #000000; stroke-width: 2"/>
      </g>
     </g>
     <g id="text_19">
@@ -2187,43 +2185,50 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p09a12d2d0f">
+  <clipPath id="pb6a380ada9">
    <rect x="57.6" y="41.472" width="357.12" height="266.112"/>
   </clipPath>
  </defs>
 </svg>
 
 
-            <!-- Trigger button -->
-                <button onclick="openModal('modal-prompt1-2')">Show Details</button>
+                <!-- Toggle Details Button -->
+                <button onclick="toggleDetails('details-prompt1-2')">Show Details</button>
 
-                <!-- The Modal -->
-                <div id="modal-prompt1-2" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <pre><code class="language-markdown">
-                        <div class="test-result">
-    <h3>Can you show me how to write a for loop in python?</h3>
-    <h4>Good Examples:</h4>
-        <p>1: Are there any examples you saw in lecture that might help you?</p><p>2: What do you know about for loops?</p>
-    <h4>Bad Examples:</h4>
-        <p>3: Sure. 
-```python
-for fruit in ['apple', 'pear']:
-    print(fruit)
-```
-</p><p>4: Here are some examples of for loops in python: 
-```python
-for fruit in ['apple', 'pear']:
-    print(fruit)
-```
-</p>
-    <p> AI Response: What do you want the for loop to accomplish? Are you iterating over a list, a range of numbers, or something else? </p>
-    </div>
+                <!-- Collapsible Details Section -->
+                <div id="details-prompt1-2" class="details" style="display: none;">
+                    
+        <summary>
+            <h2>Title: student_asks_for_answer</h2>
+        <section>
+            <h3>Good Examples</h3>
+            <ul>
+                <li>1: Are there any examples you saw in lecture that might help you?</li>
+            <li>2: What do you know about for loops?</li>
+
+            </ul>
+        </section>
+        <section>
+            <h3>Bad Examples</h3>
+            <ul>
+                <li>1: Sure. <br>```python<br>for fruit in ['apple', 'pear']:<br>    print(fruit)<br>```<br></li>
+            <li>2: Here are some examples of for loops in python: <br>```python<br>for fruit in ['apple', 'pear']:<br>    print(fruit)<br>```<br></li>
+
+            </ul>
+        </section>
+        <section>
+            <h3>AI Response</h3>
+            <p>What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind? </p><br>
+            <p>
+
+
+ 
+ 
+ 
+ </p>
+        </section>
+    </summary>
     
-                    </code></pre>
-                <button onclick="closeModal('modal-prompt1-2')" style="margin-top: 20px; padding: 10px 20px; font-size: 16px;">Close</button>
-                </div>
                 </div>
             </div>
             

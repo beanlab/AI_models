@@ -76,21 +76,21 @@
             "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?"
         ],
         "Score good": [
-            0.28,
-            0.328
+            0.282,
+            0.34
         ],
         "Bad examples input": [
             "Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?",
             "Yes, here are the two options that you might want to consider"
         ],
         "Score bad": [
-            0.803,
-            0.454
+            0.802,
+            0.442
         ],
-        "Response": "Absolutely! Here are two options to consider:\n\n1. **Token Processing Logic**: Investigate whether you have implemented the logic for converting tokens into Parameter objects correctly. This includes ensuring that you're correctly identifying token types (ID or STRING) and creating the appropriate Parameter instances.\n\n2. **Integration with Grammar**: Review how your grammar is defined and how it relates to the tokens being parsed. Are there any discrepancies between the expected tokens and those being generated or read?\n\nWhich of these options would you like to explore further?",
-        "Mean difference": -0.325,
-        "Max good": 0.328,
-        "Max bad": 0.803
+        "Response": "Of course! Here are two options for you to consider:\n\n1. **Token Processing Logic**: Focus on implementing the logic to convert tokens into Parameter objects. This includes checking if the token is an ID or STRING type and creating the corresponding Parameter using the static methods provided in the Parameter class.\n\n2. **Error Handling and Debugging**: Review the error messages you receive when running your code. Try to isolate whether the issue is with token recognition, type handling, or another part of your parsing process. \n\nWhich option would you like to explore further?",
+        "Mean difference": -0.311,
+        "Max good": 0.34,
+        "Max bad": 0.802
     },
     {
         "Test case": {
@@ -117,20 +117,20 @@
             "What do you know about for loops?"
         ],
         "Score good": [
-            0.319,
-            0.598
+            0.29,
+            0.688
         ],
         "Bad examples input": [
             "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
             "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
         ],
         "Score bad": [
-            0.292,
-            0.395
+            0.33,
+            0.47
         ],
-        "Response": "What do you want the for loop to accomplish? Do you have a specific task or dataset in mind that you want to iterate over?",
-        "Mean difference": 0.115,
-        "Max good": 0.598,
-        "Max bad": 0.395
+        "Response": "What do you want your for loop to accomplish? Are you iterating over a list, a range of numbers, or something else?",
+        "Mean difference": 0.089,
+        "Max good": 0.688,
+        "Max bad": 0.47
     }
 ]

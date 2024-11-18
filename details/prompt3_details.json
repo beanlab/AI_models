@@ -77,20 +77,20 @@
         ],
         "Score good": [
             0.298,
-            0.368
+            0.378
         ],
         "Bad examples input": [
             "Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?",
             "Yes, here are the two options that you might want to consider"
         ],
         "Score bad": [
-            0.846,
-            0.447
+            0.756,
+            0.449
         ],
-        "Response": "Sure! Here are two options to consider: \n\n1. **Token Processing Logic**: Focus on how you're creating Parameter objects from the tokens. Are you mapping them correctly based on their type (ID or STRING)?\n\n2. **Error Messages**: Look closely at the specific error messages you're encountering. They can often point you to the exact line or issue needing attention.\n\nWhich option would you like to explore further?",
-        "Mean difference": -0.313,
-        "Max good": 0.368,
-        "Max bad": 0.846
+        "Response": "Sure! Here are two options:\n\n1. **Token Processing Logic:** Investigate whether you've added the logic to convert the tokens into Parameter objects properly.\n\n2. **Integration with Grammar:** Check if your grammar definition correctly matches the expected format for creating parameters. \n\nWhich one do you want to explore further?",
+        "Mean difference": -0.265,
+        "Max good": 0.378,
+        "Max bad": 0.756
     },
     {
         "Test case": {
@@ -117,20 +117,20 @@
             "What do you know about for loops?"
         ],
         "Score good": [
-            0.295,
-            0.664
+            0.303,
+            0.673
         ],
         "Bad examples input": [
             "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
             "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
         ],
         "Score bad": [
-            0.286,
-            0.429
+            0.32,
+            0.44
         ],
-        "Response": "What specific task do you want to achieve with the for loop?",
-        "Mean difference": 0.123,
-        "Max good": 0.664,
-        "Max bad": 0.429
+        "Response": "What do you want the for loop to do? Can you describe the task you're trying to accomplish?",
+        "Mean difference": 0.108,
+        "Max good": 0.673,
+        "Max bad": 0.44
     }
 ]
