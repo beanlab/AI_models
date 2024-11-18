@@ -2,6 +2,61 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import io
 import json
+def main(template_file: Path, report_file: Path):
+    template_string = template_file.read_text()
+    overall_report_list={}
+    name =set()
+    for test_case_file in report_file.glob('*.json'):
+        main_difference, name_set,promt_name = generate_report_html(template_string,test_case_file)
+        overall_report_list[promt_name] = main_difference
+        name.update(name_set)
+
+def generate_report_html(template_string,testcase_file) -> str:
+    with open(testcase_file, 'r') as file:
+        test_details = json.load(file)
+    new_dir = Path(f"report_summary/{test_details[0]['Test input']['name']}")
+    new_dir.mkdir(exist_ok=True)
+    file_path = Path(f'{new_dir}/report.html')
+    html_string,main_difference, name = gather_data_html(test_details)   
+    html_content = template_string.replace('%%DATA%%', html_string)
+    with file_path.open("w") as file:
+        file.write(html_content)
+    print("Generated HTML report:", file_path)
+    return main_difference, name,test_details[0]['Test input']['name']
+
+def gather_data_html(test_details):
+    html_string = ""
+    i=0
+    main_difference=[]
+    name=set()
+    for each_test_detail in test_details:
+        i+=1
+        detail_info = render_result(each_test_detail)
+        svg_b64 = generate_svg(each_test_detail['Test case']['name'],each_test_detail['Score good'], each_test_detail['Score bad'])
+        html = f"""
+        <div class="test-result">
+            <h2>Max good - Max bad: {round(each_test_detail['Max good'] - each_test_detail['Max bad'], 3)}</h2>
+            <h2>Mean difference: {each_test_detail['Mean difference']}</h2>
+            <p><strong>Test Case:</strong> {each_test_detail['Test case']['name']}</p>
+            <p><strong>Input Name:</strong> {each_test_detail['Test input']['name']}</p>
+            <img data="data:base64{svg_b64}
+
+            <!-- Toggle Details Button -->
+            <button onclick="toggleDetails('details-{each_test_detail['Test input']['name']}-{i}')">Show Details</button>
+
+            <!-- Collapsible Details Section -->
+            <div id="details-{each_test_detail['Test input']['name']}-{i}" class="details" style="display: none;">
+                {detail_info}
+            </div>
+        </div>
+        """
+        html_string += html
+        main_difference.append(each_test_detail["Mean difference"])
+        name.add(each_test_detail['Test case']['name'])
+    return html_string,main_difference, name
+
+
+
 def render_result(detail_report) -> str:
     # Extract the test case name
     name = detail_report['Test case']["name"]
@@ -43,8 +98,6 @@ def render_result(detail_report) -> str:
         </section>
     </summary>
     """
-
-    print(html)
     return html
     
 
@@ -77,47 +130,11 @@ def generate_svg(name,  good,bad) -> str:
     img_bytes.seek(0)
     return img_bytes.getvalue().decode()
 
-def main(template_file: Path, report_file: Path):
-    template_string = template_file.read_text()
-    overall_report_list={}
-    name =set()
-    for test_case_file in report_file.glob('*.json'):
-        with open(test_case_file, 'r') as file:
-            test_details = json.load(file)
-        new_dir = Path(f"report_summary/{test_details[0]['Test input']['name']}")
-        new_dir.mkdir(exist_ok=True)
-        file_path = Path(f'{new_dir}/report.html')
-        html_string = ""
-        i=0
-        overall_report_list[test_details[0]['Test input']['name']] =[]
-        for each_test_detail in test_details:
-            i+=1
-            name.add(each_test_detail['Test case']['name'])
-            detail_info = render_result(each_test_detail)
-            svg_b64 = generate_svg(each_test_detail['Test case']['name'],each_test_detail['Score good'], each_test_detail['Score bad'])
-            html = f"""
-            <div class="test-result">
-                <h2>Max good - Max bad: {round(each_test_detail['Max good'] - each_test_detail['Max bad'], 3)}</h2>
-                <h2>Mean difference: {each_test_detail['Mean difference']}</h2>
-                <p><strong>Test Case:</strong> {each_test_detail['Test case']['name']}</p>
-                <p><strong>Input Name:</strong> {each_test_detail['Test input']['name']}</p>
-                <img data="data:base64{svg_b64}
 
-                <!-- Toggle Details Button -->
-                <button onclick="toggleDetails('details-{each_test_detail['Test input']['name']}-{i}')">Show Details</button>
 
-                <!-- Collapsible Details Section -->
-                <div id="details-{each_test_detail['Test input']['name']}-{i}" class="details" style="display: none;">
-                    {detail_info}
-                </div>
-            </div>
-            """
-            html_string += html
-            overall_report_list[each_test_detail['Test input']['name']].append(each_test_detail["Mean difference"])   
-        html_content = template_string.replace('%%DATA%%', html_string)
-        with file_path.open("w") as file:
-            file.write(html_content)
-    # make_overview(overall_report_list,name)
+
+
+#     make_overview(overall_report_list,name)
 
 # def make_overview(test_details,test_name):
 #     x_values = [prompt for prompt in test_details.values()]
