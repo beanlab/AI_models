@@ -2,6 +2,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import io
 import json
+import pandas as pd
+
 def main(template_file: Path, report_file: Path):
     template_string = template_file.read_text()
     overall_report_list={}
@@ -10,6 +12,7 @@ def main(template_file: Path, report_file: Path):
         main_difference, name_set,promt_name = generate_report_html(template_string,test_case_file)
         overall_report_list[promt_name] = main_difference
         name.update(name_set)
+    make_overview(template_file,overall_report_list,name)
 
 def generate_report_html(template_string,testcase_file) -> str:
     with open(testcase_file, 'r') as file:
@@ -133,14 +136,57 @@ def generate_svg(name,  good,bad) -> str:
 
 
 
+def make_overview(template_file,test_details,test_name):
+    sorted_by_keys = dict(sorted(test_details.items()))
+    return_value = get_table(sorted_by_keys,list(test_name))
+    generate_graph(sorted_by_keys,list(test_name))
+    template_string = template_file.read_text()
+    img_tage = f'<img src="line_chart.png" alt="Line Chart Representing Values by Prompts">'
+    html_content = template_string.replace('%%DATA%%', return_value+img_tage)
+    with Path("report_summary/overview.html").open("w") as file:
+        file.write(html_content)
+    
 
-#     make_overview(overall_report_list,name)
+    
 
-# def make_overview(test_details,test_name):
-#     x_values = [prompt for prompt in test_details.values()]
-#     for i in test_name:
-#         plt.plot(x_values[i], label=i)
-#     plt.figure(figsize=(10, 6))
+def generate_graph(test_details,test_name):
+    plt.figure(figsize=(8, 6))
+    for i in range(len(test_name)):
+        list_=[]
+        for value in test_details.values():
+            list_.append(value[i])
+        plt.plot(test_details.keys(), list_, marker='o', label=test_name[i])
+    
+    # Adding labels, title, and legend
+    plt.title('Line Chart Representing Values by Prompts')
+    plt.legend()
+    plt.grid(True)
+    plt.ylim(-1, 1)
+    # Display the graph
+    plt.tight_layout()
+    plt.savefig('line_chart.png')
+    plt.show
+    
+def get_table(test_details,test_name):
+    html = f"""
+    <table border="1">
+  <tr>
+    <th></th>
+"""
+    for file_name in test_details.keys():
+        html += f"<th><a href='{file_name}/report.html'>{file_name}</a></th>"
+    html+="</tr>"
+    for i in range (len(test_name)):
+        html+="<tr>"
+        html+= f"<td>{test_name[i]}</td>"
+        for value in test_details.values():
+            html+= f"<td>{value[i]}</td>"
+        html+="</tr>"
+    html+= "</table>"
+    return html
+    
+
+
 
 
     
