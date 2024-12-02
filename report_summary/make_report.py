@@ -12,7 +12,7 @@ def main(template_file: Path, report_file: Path):
         main_difference, name_set,promt_name = generate_report_html(template_string,test_case_file)
         overall_report_list[promt_name] = main_difference
         name.update(name_set)
-    make_overview(template_file,overall_report_list,name)
+    make_overview(template_string,overall_report_list,name)
 
 def generate_report_html(template_string,testcase_file) -> str:
     with open(testcase_file, 'r') as file:
@@ -58,8 +58,6 @@ def gather_data_html(test_details):
         name.add(each_test_detail['Test case']['name'])
     return html_string,main_difference, name
 
-
-
 def render_result(detail_report) -> str:
     # Extract the test case name
     name = detail_report['Test case']["name"]
@@ -102,12 +100,7 @@ def render_result(detail_report) -> str:
     </summary>
     """
     return html
-    
 
-
-
-
-    
 def generate_svg(name,  good,bad) -> str:
     plt.figure()
     num_good = list(range(1,len(good)+1))
@@ -133,22 +126,15 @@ def generate_svg(name,  good,bad) -> str:
     img_bytes.seek(0)
     return img_bytes.getvalue().decode()
 
-
-
-
-def make_overview(template_file,test_details,test_name):
+def make_overview(template_string,test_details,test_name):
     sorted_by_keys = dict(sorted(test_details.items()))
     return_value = get_table(sorted_by_keys,list(test_name))
     generate_graph(sorted_by_keys,list(test_name))
-    template_string = template_file.read_text()
-    img_tage = f'<img src="line_chart.png" alt="Line Chart Representing Values by Prompts">'
+    img_tage = f'<img src="../line_chart.png" alt="Line Chart Representing Values by Prompts"> </div>'
     html_content = template_string.replace('%%DATA%%', return_value+img_tage)
     with Path("report_summary/overview.html").open("w") as file:
         file.write(html_content)
     
-
-    
-
 def generate_graph(test_details,test_name):
     plt.figure(figsize=(8, 6))
     for i in range(len(test_name)):
@@ -169,7 +155,10 @@ def generate_graph(test_details,test_name):
     
 def get_table(test_details,test_name):
     html = f"""
-    <table border="1">
+    <div class="align-middle">
+    <div class="table-wrapper">
+    <table border="1" >
+    <h2 style="text-align: center;">Overview Report</h2>
   <tr>
     <th></th>
 """
@@ -182,15 +171,8 @@ def get_table(test_details,test_name):
         for value in test_details.values():
             html+= f"<td>{value[i]}</td>"
         html+="</tr>"
-    html+= "</table>"
+    html+= "</table> </div>"
     return html
-    
-
-
-
-
-    
-
 
 if __name__ == '__main__':
     template = Path('report_summary/template.html')

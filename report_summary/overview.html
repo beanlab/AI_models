@@ -8,29 +8,54 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            line-height: 1.6;
-            background-color: #f4f4f9;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        line-height: 1.6;
+    }
 
-        .centered-div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .test-result {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-        table {
+    .test-result h2 {
+        margin: 5px 0;
+    }
+
+    .test-result img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+    }
+
+    .test-result button {
+        background-color: #0056b3;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .test-result button:hover {
+        background-color: #004494;
+    }
+
+    .details {
+        margin-top: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+    table {
             border-collapse: collapse;
             width: 100%;
             margin: 20px 0;
@@ -43,19 +68,18 @@
         }
 
         th {
-            background-color: #95c3f5;
+            background-color: #79b1ed;
             color: white;
         }
 
         a {
-            color:black;
+            color: black;
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
         }
-
         img {
             display: block;
             max-width: 100%;
@@ -65,39 +89,23 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        code {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            display: block;
-            white-space: pre-wrap;
-            width: 100%;
-        }
-
-        .toggle-button {
-            background-color: #0056b3;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 20px 0;
-        }
-
-        .toggle-button:hover {
-            background-color: #004494;
-        }
-
-        .details {
-            display: none; /* Hidden by default */
-            margin-top: 15px;
-            padding: 10px;
+        .table-wrapper {
+    overflow-x: auto;
+}
+.align-middle {
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            padding: 20px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            max-width: 90%;
+            text-align: center;
         }
-    </style>
+</style>
 </head>
 <body>
     <script>
@@ -115,10 +123,13 @@
     </div>
     <div class="centered-div"> <code>
         
-    <table border="1">
+    <div class="align-middle">
+    <div class="table-wrapper">
+    <table border="1" >
+    <h2 style="text-align: center;">Overview Report</h2>
   <tr>
     <th></th>
-<th><a href='prompt1/report.html'>prompt1</a></th><th><a href='prompt2/report.html'>prompt2</a></th><th><a href='prompt3/report.html'>prompt3</a></th></tr><tr><td>student_asks_for_answer</td><td>-0.311</td><td>-0.303</td><td>-0.265</td></tr><tr><td>Rubber Duck Debugging</td><td>0.089</td><td>0.142</td><td>0.108</td></tr></table><img src="../line_chart.png" alt="Line Chart Representing Values by Prompts">
+<th><a href='prompt1/report.html'>prompt1</a></th><th><a href='prompt2/report.html'>prompt2</a></th><th><a href='prompt3/report.html'>prompt3</a></th></tr><tr><td>student_asks_for_answer</td><td>-0.311</td><td>-0.303</td><td>-0.265</td></tr><tr><td>Rubber Duck Debugging</td><td>0.089</td><td>0.142</td><td>0.108</td></tr></table> </div><img src="../line_chart.png" alt="Line Chart Representing Values by Prompts"> </div>
     </code>
     </div>
 </body>
