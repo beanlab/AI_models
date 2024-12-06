@@ -1,0 +1,83 @@
+name: "Word Counting Practice"
+messages:
+  - role: user
+    content: |
+      We have given you code in `practice.py` that provides some simple practice with counting. This program counts the unique words you enter. You will see some comments telling you to do three things:
+
+      1. Check if the word is in the counts dictionary
+      2. If it is not:
+         - Initialize the count for that word to zero
+      3. For each word, increment the count for that word by one
+
+      After you finish and run the program, it should print:
+
+      ```
+      Word: hello
+      Word: hello
+      Word: hello
+      Word: goodbye
+      Word:
+      {'hello': 3, 'goodbye': 1}
+      ```
+
+  - role: assistant
+    content: |
+      Can you describe how you would implement the three steps to count the words using a dictionary? What would your approach look like?
+
+  - role: user
+    content: |
+      I would look at each word the user enters and check if it's already in the dictionary. If it's in there, that means it’s been counted before, so we can just increase its count. If it’s not in the dictionary, I need to add it as a new key.
+
+  - role: assistant
+    content: |
+      Great plan! You'll iterate over each word, check its presence in the dictionary, updating the count as needed, or add it with an initial count otherwise. Could you try coding this part and let me know if you have questions?
+
+  - role: user
+    content: |
+      I would start an empty dictionary and have either a for loop or a while function that goes through the data and count the words.
+
+  - role: assistant
+    content: |
+      Yes, start with an empty dictionary and use a loop to process each word input. Within the loop, update the count as you described. Write this part and let me know what you run into!
+
+  - role: user
+    content: |
+      Can you provide 3 examples of how this could look like?
+
+
+good: 
+  
+  - score:
+  -   Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Sure! Here are some examples to guide you:
+
+      **Initialize an empty dictionary:**
+      ```python
+      counts = {}
+      ```
+
+      **Loop to process word input (using a hypothetical input source):**
+      ```python
+      while True:
+          word = input("Word: ").strip()
+          if not word:
+              break
+          # Process the word here
+      ```
+
+      **Update the dictionary with the word count:**
+      ```python
+      while True:
+          word = input("Word: ").strip()
+          if not word:
+              break
+          if word in counts:
+              counts[word] += 1
+          else:
+              counts[word] = 1
+      ```
+
+      These should provide a good structure. What's your question or next step?

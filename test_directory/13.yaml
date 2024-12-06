@@ -1,0 +1,205 @@
+name: "13"
+messages:
+  - role: user
+    content: |
+      Write a calculator program in calculator.cpp.
+
+      You can assume the user always provides valid inputs
+      e.g. the test will not enter lizard when the program expects a number
+      You won't be asked to divide or mod by zero
+      Support add, subtract, multiply, divide, and mod (modulus) operations
+      Each of these operations takes a left operand and right operand
+      If the user enters an invalid operation (one that is not add, subtract, etc.),
+      your program should print {operation} isn't a valid operation and prompt the
+      user to enter another operation (see example).
+      The program should exit when given an empty operation
+      Follow the formatting demonstrated in the example
+      A Word to the Wise
+
+      Read cin using getline, not >>.
+
+      Because the >> operator ignores whitespace, using it makes it impossible to enter
+      an empty string as an input for the operation.
+
+      Look at guessing_game.cpp for an example of how to use getline for this use-case.
+
+      Example
+
+      $ ./calculator
+      operation: add
+      left operand: 1
+      right operand: 2
+      3
+      operation: asdf
+      asdf isn't a valid operation
+      operation: add
+      left operand: 5
+      right operand: -7
+      -2
+      operation:
+  - role: assistant
+    content: Great, you're tasked with writing a calculator program. What do you think are the main steps you need to implement this program?
+  - role: user
+    content: Check if the operation is one of the valid commands (add, subtract, multiply, divide, mod). If not, print the {operation} isn't a valid operation message.
+  - role: assistant
+    content: That sounds like a good approach. How would you plan to check if the operation is valid or not in your code?
+  - role: user
+    content: You could use a list (or set) of valid operations, like add, subtract, multiply, divide, and mod. Then, each time the program receives an operation, it would check if that operation exists in the list. If it doesn't, the program can output the “invalid operation” message and prompt the user again.
+  - role: assistant
+    content: Exactly, that's a solid strategy. How will you handle reading and processing input from the user?
+  - role: user
+    content: Use getline for reading input, starting with the operation prompt. Check if the operation input is empty. If it is, exit the program. If the operation is valid, use getline again to prompt for the left and right operands. Convert these inputs to integers for the calculations. Repeat this loop until the user enters an empty operation.
+  - role: assistant
+    content: Would you provide two examples to see how that would look like?
+  - role: user
+    content: To see the flow
+
+      Prompt for operation using getline.
+      Check if operation is empty; if yes, exit.
+      Validate the operation against a set of known operations.
+      If invalid, print the message and prompt again.
+      If valid, prompt for operands using getline, convert to integers, and perform the calculation.
+      Output the result and repeat.
+
+      Based on these steps, give it a try in your code! If you run into any issues or have specific questions, feel free to ask.
+  - role: user
+    content: I understand the steps. Could you show me a sample interaction between the user and program, highlighting the expected input and output lines based on these steps?
+  - role: assistant
+    content: Certainly! Here's an example interaction sequence:
+      operation add
+      left operand 4
+      right operand 5
+      9
+      operation divide
+      left operand 10
+      right operand 2
+      5
+      operation unknown
+      unknown isn't a valid operation
+      operation subtract
+      left operand 9
+      right operand 3
+      6
+      operation
+
+      This should give you a clear view of how user input and program output should flow. Want to try implementing it and see how it goes?
+  - role: user
+    content: Could you show how the interaction would look if the user entered a sequence of invalid operations or left the operand blank?
+  - role: assistant
+    content: Sure! Here's how it might look with invalid operations or missing input
+      operation random
+      random isn't a valid operation
+      operation multiply
+      left operand
+      right operand 
+      multiply isn't a valid operation
+      operation subtract
+      left operand 
+
+      However, it's important to note that you need to ensure that the operands are always entered correctly in your implementation. If they're missing, handle it so that the program behaves as expected. Want to give it a try with the logic you've outlined?
+  - role: user
+    content: Could you suggest how to handle cases where the user enters a blank for either operand?
+  - role: assistant
+    content: To handle blank operands, you can
+
+      Use getline to read the input and check if it's empty.
+      If an operand input is empty, prompt the user to re-enter the operand by displaying a message.
+      Ensure this check is done before converting the operand to an integer.
+
+      Implement these checks after each operand prompt to ensure valid inputs. Want to give it a shot and see how it turns out?
+  - role: user
+    content: I think handling missing operands could be tricky. What kind of approach would ensure the program waits for valid inputs without getting stuck or quitting unexpectedly?
+  - role: assistant
+    content: To ensure the program waits for valid inputs
+
+      Use a loop to continuously prompt for each operand until valid input is received.
+      Validate by checking if the input is non-empty before converting it to an integer.
+      If the input is empty, print an error message and prompt again.
+
+      This approach ensures the program waits for correct inputs and handles cases gracefully. Want to try this method in your code?
+  - role: user
+    content: If the program repeatedly prompts the user for input in a loop, how could it handle non-integer inputs without crashing when converting to integers?
+  - role: assistant
+    content: To handle non-integer inputs
+
+      Use getline to read the input as a string.
+      Attempt to convert the string to an integer using std::stoi.
+      Use a try-catch block around std::stoi to catch exceptions for non-integer inputs.
+      If an exception occurs, display an error message and prompt the user again.
+
+      This ensures the program handles non-integer inputs gracefully. Would you like to implement this and see how it performs?
+  - role: user
+    content: Given all the strategies we've discussed for handling input and validation, could you show me how these concepts could be translated into code for the calculator?
+  - role: assistant
+    content: I can guide you through writing that code. Start by setting up the main input loop and incorporate error handling based on our discussion.
+
+      Use getline for reading operation and operands.
+      Validate operation against a set of valid operations.
+      Implement a loop for prompting and validating each operand.
+      Use std::stoi in a try-catch block for operand conversion.
+
+      Begin with these components, and try writing the initial structure. If you get stuck on a specific part, feel free to share your code, and we can work through it together!
+  - role: user
+    content: Could you show me how the main loop and input handling would look in code, incorporating everything we've talked about?
+
+
+good: 
+  - score:
+  -  Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  - Certainly! I'll outline the structure to get you started
+
+      ```cpp
+
+
+      int main() {
+          std::set<std::string> valid_operations = {"add", "subtract", "multiply", "divide", "mod"};
+          std::string operation;
+
+          while (true) {
+              std::cout << "operation ";
+              std::getline(std::cin, operation);
+
+              if (operation.empty()) {
+                  break;
+              }
+
+              if (valid_operations.find(operation) == valid_operations.end()) {
+                  std::cout << operation << " isn't a valid operation\n";
+                  continue;
+              }
+
+              std::string left_operand, right_operand;
+              int left = 0, right = 0;
+              
+              while (true) {
+                  try {
+                      std::cout << "left operand ";
+                      std::getline(std::cin, left_operand);
+                      left = std::stoi(left_operand);
+                      break; // Exit loop if conversion is successful
+                  } catch (...) {
+                      std::cout << "Please enter a valid integer.\n";
+                  }
+              }
+              
+              while (true) {
+                  try {
+                      std::cout << "right operand ";
+                      std::getline(std::cin, right_operand);
+                      right = std::stoi(right_operand);
+                      break;
+                  } catch (...) {
+                      std::cout << "Please enter a valid integer.\n";
+                  }
+              }
+
+              // Add logic for performing the operations using left and right variables here
+          }
+
+          return 0;
+      }
+      ```
+
+      Try implementing this, and make sure to fill in the logic for performing operations. If you encounter any issues, let me know!

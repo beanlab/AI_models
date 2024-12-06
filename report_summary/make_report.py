@@ -25,7 +25,7 @@ def generate_report_html(template_string,testcase_file) -> str:
     with file_path.open("w") as file:
         file.write(html_content)
     print("Generated HTML report:", file_path)
-    return main_difference, name,test_details[0]['Test input']['name']
+    return main_difference,  name, test_details[0]['Test input']['name']
 
 def gather_data_html(test_details):
     html_string = ""
@@ -89,12 +89,12 @@ def render_result(detail_report) -> str:
         html += f"""            <li>{i}: {code_block}</li>\n"""
 
     # Add AI Response Section
-    html += """
+    html += f"""
             </ul>
         </section>
         <section>
             <h3>AI Response</h3>
-            <p>What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind? </p><br>
+            <p>{detail_report['Response']} </p><br>
             <p>\n\n\n \n \n \n </p>
         </section>
     </summary>

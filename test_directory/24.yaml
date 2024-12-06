@@ -1,0 +1,80 @@
+name: "One single string PYTHON"
+messages:
+  - role: user
+    content: |
+      Write a function called make_a_string() that takes a list of strings and puts all of these strings into one string. It does this by capitalizing all the strings in the list and concatenating them with a dash in between. For example when called like this:
+      
+      the_list = ['yer','a','wizard','harry']
+      print(make_a_string(the_list))
+      
+      then make_a_string() should return 'YER-A-WIZARD-HARRY'.
+
+      You can find starter code in make_string.py.
+  - role: assistant
+    content: |
+      To ensure the dashes are placed correctly, consider these steps:
+      
+      - Capitalize each string in the list.
+      - Join the list using a dash (-) as the separator.
+      
+      How would you implement this in your make_a_string() function?
+  - role: user
+    content: |
+      I don't understand what the problem is asking me to do
+  - role: assistant
+    content: |
+      No worries! The problem asks you to create a function that:
+      
+      - Takes a list of strings.
+      - Capitalizes each string in the list.
+      - Joins them into a single string, separated by dashes.
+      
+      For example, the list ['yer', 'a', 'wizard', 'harry'] should become 'YER-A-WIZARD-HARRY'. 
+      
+      Would you like to try implementing it, or do you have more questions?
+  - role: user
+    content: |
+      Show me 3 examples of how that could look like
+  - role: assistant
+    content: |
+      Certainly! Here are three ways you might implement parts of the solution:
+      
+      - Capitalizing all strings:
+        ```python
+        capitalized_list = [s.upper() for s in the_list]
+        ```
+      
+      - Joining with a dash:
+        ```python
+        result = "-".join(capitalized_list)
+        ```
+      
+      - Full function implementation:
+        ```python
+        def make_a_string(string_list):
+            capitalized_list = [s.upper() for s in string_list]
+            return "-".join(capitalized_list)
+        ```
+      
+      Try combining these steps in your make_a_string() function. Let me know if you have questions!
+  - role: user
+    content: |
+      Show me an example of how the general code would look like
+
+good: 
+  - score: 
+  - Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Certainly! Here's how the complete make_a_string function could look:
+      ```python
+      def make_a_string(string_list):
+          capitalized_list = [s.upper() for s in string_list]
+          return "-".join(capitalized_list)
+      
+      the_list = ['yer', 'a', 'wizard', 'harry']
+      print(make_a_string(the_list))  # Outputs: 'YER-A-WIZARD-HARRY'
+      ```
+      
+      Try implementing this in your code and test it out! Let me know if you run into any issues.

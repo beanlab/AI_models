@@ -1,0 +1,131 @@
+name: "group_by_first_two_letters"
+messages:
+  - role: assistant
+    content: >
+      We have given you code in `group_by_first_two_letters.py` that is supposed to group words you type in based on their first two letters. 
+      This is very similar to the code in the guide on grouping. You need to write the `group_by_first_two_letters()` function:
+
+      ```python
+      def group_by_first_two_letters(words: list[str]) -> dict[tuple[str, str], list[str]]:
+          """
+          Group a list of words by their first two letters.
+
+          words -> a list of strings
+
+          returns a dictionary that maps a letter to a list of words
+          """
+          # Write code here
+          pass
+      ```
+
+      After you write this code and run it, it should see something like this:
+
+      ```
+      Word: horse
+      Word: cow
+      Word: hope
+      Word: cool
+      Word: weird
+      Word:
+      ['horse', 'cow', 'hope', 'cool', 'weird']
+      {('h', 'o'): ['horse', 'hope'], ('c', 'o'): ['cow', 'cool'], ('w', 'e'): ['weird']}
+      ```
+  - role: assistant
+    content: >
+      Can you summarize what the `group_by_first_two_letters` function needs to do? Then, describe how you think you can approach solving this problem.
+  - role: user
+    content: >
+      I need to use a for loop to detect the first two letters of each word and convert them into a tuple.
+  - role: assistant
+    content: >
+      That's a good start. What do you think you should do with these tuples once you create them from each word?
+  - role: user
+    content: >
+      Do I have to append the words into an empty list?
+  - role: assistant
+    content: >
+      Yes, you'll need to use a dictionary where each key is a tuple of the first two letters, and the value is a list of words starting with those letters. 
+      How might you update the dictionary as you iterate over each word?
+  - role: user
+    content: >
+      Can you show me an example of how that could look like?
+  - role: assistant
+    content: >
+      Sure! First, check if the tuple of first two letters is already a key in the dictionary. If it is, append the word to the list; if not, create a new key with the word in a list. 
+      Could you give it a try?
+  - role: user
+    content: >
+      I might need help with something I can start with.
+  - role: assistant
+    content: >
+      Certainly! Consider starting with a loop to iterate over the words list. For each word, extract the first two letters and form a tuple. Try coding that part first. 
+      What's your next question?
+  - role: user
+    content: >
+      Can you show me 3 examples of how the for loop would look like?
+  - role: assistant
+    content: >
+      Sure, here are some examples of how you might begin the loop:
+
+      **Extract the tuple of first two letters:**
+      ```python
+      for word in words:
+          key = (word[0], word[1])
+      ```
+
+      **Initialize an empty dictionary:**
+      ```python
+      result = {}
+      for word in words:
+          key = (word[0], word[1])
+      ```
+
+      **Check if the key is in the dictionary:**
+      ```python
+      result = {}
+      for word in words:
+          key = (word[0], word[1])
+          if key in result:
+              result[key].append(word)
+          else:
+              result[key] = [word]
+      ```
+
+      These examples should help you get started with designing your loop. What would you like to try next?
+  - role: user
+    content: >
+      This is what I have coded:
+      ```python
+      result = {}
+      for word in words:
+          key = (word[0], word[1])
+          if key in result:
+              result[key].append(word)
+          else:
+              result[key] = [word]
+      ```
+
+      How would I implement it with the `group_by_first_two_letters` function?
+
+good: 
+  
+  - score:
+  - Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Your code is correctly grouping the words by their first two letters. To incorporate it into the `group_by_first_two_letters` function, wrap it in the function and return `result` at the end:
+
+      ```python
+      def group_by_first_two_letters(words: list[str]) -> dict[tuple[str, str], list[str]]:
+          result = {}
+          for word in words:
+              key = (word[0], word[1])
+              if key in result:
+                  result[key].append(word)
+              else:
+                  result[key] = [word]
+          return result
+      ```
+
+      Try incorporating this structure into your function. What question do you have next?

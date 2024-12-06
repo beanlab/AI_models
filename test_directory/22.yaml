@@ -1,0 +1,81 @@
+name: "Extracting grades"
+messages:
+  - role: user
+    content: |
+      We have given you some code in round_up.py that is supposed to do the following:
+      reads a CSV file that contains lines of “name,grade”
+      rounds up everyone’s grade, using a dictionary
+      writes a CSV file that contains lines of “name,new_grade”, using the new grades
+      Review the code that is written for you to see what it does.
+
+      To complete this code, you need to write one function. change(line, grades) takes a single line that has the form “name,grade\n”. It returns a new line of the form “name,new_grade\n”.
+
+      After you write this code, run the program with:
+
+      python round_up.py grades1.csv new_grades1.csv
+      Check the file new_grades1.csv to be sure you got it to work correctly.
+
+      Now run the code with:
+
+      python round_up.py grades2.csv new_grades2.csv
+      If you get an error when you run it with this new file, that is OK! We have been sneaky and put two grades in this file that don’t appear in the dictionary. One student has an ‘A+’ and another has a ‘P’. You need to change your code so that it does not assume that the original grade is in the grades dictionary. You will need to use get(). See above.
+  - role: assistant
+    content: |
+      To handle grades that might not be in the dictionary, you can use the get() method. Describe how you could use get() in your change function to handle grades not present in the dictionary.
+  - role: user
+    content: |
+      I might need some clarity on what the problem wants me to do
+  - role: assistant
+    content: |
+      Sure! The problem asks you to handle cases where a grade isn't found in the dictionary. The get() method can help by providing a default value if the key doesn't exist. How do you think you could incorporate get() into the change function?
+  - role: user
+    content: |
+      What are those functions for?
+  - role: assistant
+    content: |
+      The get() method for dictionaries allows you to retrieve a value for a given key, and importantly, specify a default value if the key isn't found. This prevents errors if the key is missing. In the change function, you can use it to handle grades not present in the dictionary by providing a sensible default action. Would you like to think about how to use get() now?
+  - role: user
+    content: |
+      I need to extract the grade?
+  - role: assistant
+    content: |
+      Yes, exactly! Use get() to extract the grade. If it's not in the dictionary, you can handle it gracefully. What default value or behavior might you consider when the grade isn't found?
+  - role: user
+    content: |
+      Can you show me 3 examples of how this could look like?
+
+good: 
+  - score:
+  -  Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad:
+  - score:
+  -   |
+      Certainly! Here are examples using get() in different scenarios:
+
+      - Using get() with a default value:
+        ```python
+        grade_mapping = {'A': 90, 'B': 80, 'C': 70}
+        grade = 'A+'
+        new_grade = grade_mapping.get(grade, "Unknown")  # Returns "Unknown" if grade is missing
+        ```
+
+      - Handling with a default action:
+        ```python
+        def change(line, grades):
+            name, grade = line.strip().split(',')
+            new_grade = grades.get(grade, "0")  # Defaults to "0" if grade not found
+            return f"{name},{new_grade}\n"
+        ```
+
+      - Logging unknown grades:
+        ```python
+        def change(line, grades):
+            name, grade = line.strip().split(',')
+            new_grade = grades.get(grade)
+            if new_grade is None:
+                print(f"Unknown grade for {name}: {grade}")
+                new_grade = "0"  # Fallback value
+            return f"{name},{new_grade}\n"
+        ```
+
+      Try implementing the approach that best fits your program and see how it handles missing grades!

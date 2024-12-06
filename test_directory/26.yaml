@@ -1,0 +1,96 @@
+name: "Double space problem"
+messages:
+  - role: user
+    content: |
+      For this problem, you will write an entire program from scratch. It follows the same file processing pattern, so we encourage you to copy the relevant parts from the prior program.
+
+      This program should:
+
+      - read in a file
+      - add a blank line after every line
+      - write the results to a new file
+
+      The program takes the input and output files as arguments. We have given you a file called still-i-rise.txt, which contains a famous poem by Maya Angelou, a civil rights activist. When you run the program:
+
+      % python double_space.py still-i-rise.txt doubled.txt
+
+      then the file doubled.txt should contain the same poem, but double spaced.
+  - role: assistant
+    content: |
+      To solve this, start by outlining the general steps you'll need to take:
+
+      - Open and read the input file: Loop through each line.
+      - Modify each line: Add a blank line after each existing line.
+      - Write to an output file: Save the modified content.
+
+      Would you like to describe how you'd implement this step-by-step?
+  - role: user
+    content: |
+      I don't understand what this problem wants me to do
+  - role: assistant
+    content: |
+      The problem asks you to write a program that:
+
+      - Reads a text file line by line.
+      - Adds a blank line after each line in the file (to create a double-spaced format).
+      - Writes the modified lines to a new output file.
+
+      The result is a new file where every original line is followed by an empty line. This makes the text "double-spaced." Would you like guidance on implementing each part?
+  - role: user
+    content: |
+      Show me 3 examples of how that would look like
+  - role: assistant
+    content: |
+      Sure! Here are steps and code snippets for implementing the solution:
+
+      - Reading the input file:
+        ```python
+        with open('still-i-rise.txt', 'r') as infile:
+            lines = infile.readlines()
+        ```
+
+      - Creating double-spaced lines:
+        ```python
+        double_spaced_lines = []
+        for line in lines:
+            double_spaced_lines.append(line)
+            double_spaced_lines.append('\n')
+        ```
+
+      - Writing to the output file:
+        ```python
+        with open('doubled.txt', 'w') as outfile:
+            outfile.writelines(double_spaced_lines)
+        ```
+
+      Combine these steps in your program to create the desired output. Let me know if you have further questions!
+  - role: user
+    content: |
+      Show me an example where you put everything together
+
+good: 
+  - score:
+  -  Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Certainly! Here's an example that puts everything together:
+      
+      ```python
+      def double_space_file(input_filename, output_filename):
+          with open(input_filename, 'r') as infile:
+              lines = infile.readlines()
+          
+          double_spaced_lines = []
+          for line in lines:
+              double_spaced_lines.append(line)
+              double_spaced_lines.append('\n')
+          
+          with open(output_filename, 'w') as outfile:
+              outfile.writelines(double_spaced_lines)
+
+      # Usage
+      double_space_file('still-i-rise.txt', 'doubled.txt')
+      ```
+
+      This code reads the input file, doubles the spacing by adding a blank line after each line, and writes the result to the output file.
