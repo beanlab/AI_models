@@ -166,7 +166,7 @@ def make_overview(template_string,test_details,test_name):
         file.write(html_content)
     
 def generate_graph(test_details,test_name):
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(8+len(test_name)*0.3, 6+len(test_name)*0.3))
     for i in range(len(test_name)):
         list_=[]
         for value in test_details.values():

@@ -1,0 +1,85 @@
+name: "Word Counting in Text"
+messages:
+  - role: user
+    content: |
+      We have given you some code in `better_writing.py` that is supposed to count how many times a file contains the words “very” and “really”. You need to write the `count_words()` function:
+
+      ```python
+      def count_words(content: str, words: list[str]) -> dict[str, int]:
+          """
+          content -- a string
+          words -- a list of strings
+
+          Count how many times each word in <words> appears in <content>.
+          Return a dictionary that maps each word in <words> to its count.
+          """
+          # Write code here
+          pass
+      ```
+
+      We have given you a file called `writing.txt` that contains an example of bad writing:
+
+      ```
+      I was going really fast down a very steep hill. In fact, I was going so
+      fast my tires were a blur and I was really scared. Suddenly I saw a very
+      small dog crossing my path. I pushed the brakes really hard and stopped
+      just in time. I was very grateful and really glad.
+      ```
+
+      After you write this code, run the program with:
+
+      ```bash
+      python better_writing.py writing.txt
+      ```
+
+      You should see something like this:
+
+      ```
+      very: 3
+      really: 4
+      ```
+
+  - role: assistant
+    content: |
+      First, can you describe how you think you might implement the `count_words` function? What approach will you take to achieve the word counting?
+
+  - role: user
+    content: |
+      I need to create an empty dictionary, then use a for loop to count the words in the text.
+
+  - role: assistant
+    content: |
+      Exactly. You'll iterate over the list of words, checking how often each word appears in the content. How do you think you might find and count each word's occurrences within the content?
+
+  - role: user
+    content: |
+      I can use Python's `.count()` method to count how often each word appears in the content.
+
+  - role: assistant
+    content: |
+      Yes, using the `.count()` method is a great choice to count occurrences. Try implementing this in your function by iterating over the list of words, and let me know if you have questions!
+
+  - role: user
+    content: |
+      Can you provide an example of how that would look like?
+
+
+good: 
+  
+  - score:
+  -   Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Sure! Here's a simple example:
+
+      ```python
+      def count_words(content: str, words: list[str]) -> dict[str, int]:
+          result = {}
+          for word in words:
+              count = content.count(word)
+              result[word] = count
+          return result
+      ```
+
+      This iterates over each word, counts occurrences in the content, and stores the result in a dictionary. Give it a try, and let me know if you have any questions!

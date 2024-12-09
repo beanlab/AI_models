@@ -1,0 +1,131 @@
+name: "Calorie Lookup"
+messages:
+  - role: user
+    content: |
+      We have given you some code in `calorie_lookup.py` that is supposed to do the following:
+
+      - read a CSV file that contains lines of foods that list “name,calories”
+      - put these into a dictionary that maps foods to calories
+      - use an input loop to ask you to type in a food and then it tells you how many calories are in that food
+
+      **Tasks:**
+
+      Review the code that is written for you to see what it does.
+
+      To complete this code, you need to write one function called `read_csv(filename)`:
+
+      ```python
+      def read_csv(filename: str) -> dict[str, str]:
+          """
+          Reads the CSV file with the given filename. It should
+          have lines that are of the format "food,calories". This
+          function returns a dictionary that maps food -> calories.
+          """
+          # write code here
+          pass
+      ```
+
+      We have given you a file called `cereal-calories.csv` that contains a bunch of cereals and their calories per serving. The first few lines look like this:
+
+      ```
+      Apple Cinnamon Cheerios,110
+      Basic 4,130
+      Cheerios,110
+      Cinnamon Toast Crunch,120
+      Clusters,110
+      Cocoa Puffs,110
+      ```
+
+      After you write this code, run the program with:
+
+      ```bash
+      python calorie_lookup.py cereal-calories.csv
+      ```
+
+      You should see something like this:
+
+      ```
+      Food: Count Chocula
+      Count Chocula has 110 calories per serving
+      Food: Apple Jacks
+      Apple Jacks has 110 calories per serving
+      Food: Life
+      Life has 100 calories per serving
+      Food:
+      ```
+
+  - role: assistant
+    content: |
+      Great! What do you think you need to do to implement the `read_csv` function? Describe the steps you believe are necessary.
+
+  - role: user
+    content: |
+      I’d open the CSV file and read it line by line.
+
+  - role: assistant
+    content: |
+      Good start! What would you do next after reading each line?
+
+  - role: user
+    content: |
+      I’ll split it by the comma to separate the food name from its calorie count.
+
+  - role: assistant
+    content: |
+      Right. Once you have the food name and calorie count separated, how would you use them to build the dictionary?
+
+  - role: user
+    content: |
+      I’ll append each food and its corresponding calorie count to a dictionary.
+
+  - role: assistant
+    content: |
+      Exactly. Add each food as a key and its calorie count as a value in the dictionary. What would you do after populating the dictionary?
+
+  - role: user
+    content: |
+      Can you show me 3 examples of this could look like?
+
+  - role: assistant
+    content: |
+      I won't write the full code for you, but here's a quick outline:
+
+      - Open the CSV file.
+      - Read lines in a loop.
+      - Split each line by comma to get the food name and calories.
+      - Add them to the dictionary.
+      - Return the dictionary.
+
+      Try implementing these steps in your `read_csv` function. Let me know how it goes or if you run into any issues!
+
+  - role: user
+    content: |
+      Can you show me 3 examples of this could look like?
+
+good: 
+  - score:
+  -   Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Sure, here's how some parts of the code could look conceptually:
+
+      **Opening the file:**
+      ```python
+      with open(filename, 'r') as file:
+          # Your code to read lines goes here
+      ```
+
+      **Reading and splitting lines:**
+      ```python
+      for line in file:
+          food, calories = line.strip().split(',')
+          # Add to dictionary
+      ```
+
+      **Adding to the dictionary:**
+      ```python
+      food_dict[food] = calories
+      ```
+
+      Now, try combining these ideas in your `read_csv` function and see if it works! Let me know if you have more questions.

@@ -1,0 +1,85 @@
+name: "Movie Ratings Practice"
+messages:
+  - role: user
+    content: |
+      We have given you code in `practice.py` that provides some simple practice problems. You will see items 1 through 4:
+
+      1. Create an empty dictionary named `movie_ratings`
+      2. Add these entries to the dictionary:
+         - “Toy Story 2” → “100%”
+         - “Toy Story” → “100%”
+         - “Finding Nemo” → “99%”
+         - “Inside Out” → “98%”
+         - “Toy Story 3” → “98%”
+      3. Write a loop that prints `The rating for {movie} is {rating}` using the list `movies = ["Toy Story", "Toy Story 2", "Toy Story 3"]`
+      4. Write a loop that prints `The rating for {movie} is {rating}` for ALL of the movies, by iterating over all of the (movie, rating) tuples in the entire dictionary.
+
+      Here is what the output of the program should look like if you have done this correctly:
+
+      ```
+      The rating for Toy Story is 100%
+      The rating for Toy Story 2 is 100%
+      The rating for Toy Story 3 is 98%
+
+      The rating for Toy Story 2 is 100%
+      The rating for Toy Story is 100%
+      The rating for Finding Nemo is 99%
+      The rating for Inside Out is 98%
+      The rating for Toy Story 3 is 98%
+      ```
+
+  - role: assistant
+    content: |
+      Let's break this down. Describe what you need to do for each step, starting with creating the empty dictionary.
+
+  - role: user
+    content: |
+      In my code I'd create an empty dictionary and then add the specified movie-rating pairs to this dictionary. I don't know what the next step could be.
+
+  - role: assistant
+    content: |
+      Great start! Next, create a loop to iterate over the movies list and print each movie's rating from the dictionary. What do you think is the final step after that?
+
+  - role: user
+    content: |
+      I could make another for loop.
+
+  - role: assistant
+    content: |
+      Exactly! You would use another loop to iterate over all key-value pairs in the dictionary and print each movie with its rating. Try implementing these steps, and see how it goes!
+
+  - role: user
+    content: |
+      Can you show me 3 examples of how this could look like?
+
+good: 
+  - score:
+  -   Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: |
+      Certainly, here are some examples for each part:
+
+      **Creating the dictionary:**
+      ```python
+      movie_ratings = {
+          "Toy Story 2": "100%",
+          "Toy Story": "100%",
+          "Finding Nemo": "99%",
+          "Inside Out": "98%",
+          "Toy Story 3": "98%"
+      }
+      ```
+
+      **Looping through the movies list:**
+      ```python
+      movies = ["Toy Story", "Toy Story 2", "Toy Story 3"]
+      for movie in movies:
+          print(f"The rating for {movie} is {movie_ratings[movie]}")
+      ```
+
+      **Iterating over the entire dictionary:**
+      ```python
+      for movie, rating in movie_ratings.items():
+          print(f"The rating for {movie} is {rating}")
+      ```
+
+      Use these structures in your code and test your implementation! Let me know if you run into any issues.
