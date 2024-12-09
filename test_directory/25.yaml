@@ -1,0 +1,93 @@
+name: "Password activity"
+messages:
+  - role: user
+    content: |
+      Write a function that checks whether a password is a “good” password. A password is good only if it:
+      
+      - has at least 8 characters
+      - has at least one lowercase character
+      - has at least one uppercase character
+      - has at least one number
+      
+      For example this
+      
+      print(check_password('password'))
+      prints False
+      
+      and this
+      
+      print(check_password('a87fRPesT'))
+      prints True.
+      
+      There is starter code in password_checker.py and a set of examples that should alternate False and True.
+      
+      To check whether a string has at least one lowercase letter, you can:
+      
+      - set a variable, has_lowercase to False
+      - loop through the string checking every character
+      - if you find a character that is lowercase, set has_lowercase to True
+  - role: assistant
+    content: |
+      You're tasked with checking characteristics of a password. To start, describe your plan for implementing the checks in the check_password function.
+  - role: user
+    content: |
+      I don't understand what the problem is requiring me to do
+  - role: assistant
+    content: |
+      The problem requires you to write a function check_password that verifies if a password meets certain criteria:
+      
+      - Length: At least 8 characters.
+      - Lowercase: At least one lowercase letter.
+      - Uppercase: At least one uppercase letter.
+      - Number: At least one numeric digit.
+      
+      If all conditions are met, the function returns True; otherwise, it returns False.
+      
+      Would you like help on how to implement these checks step-by-step?
+  - role: user
+    content: |
+      What is the check_password function for?
+  - role: assistant
+    content: |
+      The check_password function is designed to evaluate whether a given password meets the criteria for being considered "good." It checks the password length, presence of lowercase and uppercase letters, and inclusion of at least one number. If the password satisfies all these conditions, the function returns True; otherwise, it returns False. 
+      
+      Would you like to try implementing it or need more guidance?
+  - role: user
+    content: |
+      Show me 3 examples of how the check_password function would look like
+
+good: 
+  - score: 
+  - Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad:
+  - score:
+  -   |
+      Certainly! Here are examples for implementing different parts of the check_password function:
+      
+      - Checking for length:
+        ```python
+        if len(password) < 8:
+            return False
+        ```
+      
+      - Checking for lowercase, uppercase, and digits:
+        ```python
+        has_lowercase = any(c.islower() for c in password)
+        has_uppercase = any(c.isupper() for c in password)
+        has_digit = any(c.isdigit() for c in password)
+        ```
+      
+      - Full function implementation:
+        ```python
+        def check_password(password):
+            if len(password) < 8:
+                return False
+            
+            has_lowercase = any(c.islower() for c in password)
+            has_uppercase = any(c.isupper() for c in password)
+            has_digit = any(c.isdigit() for c in password)
+            
+            return has_lowercase and has_uppercase and has_digit
+        ```
+      
+      Try these ideas in your code and see how it performs!

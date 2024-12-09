@@ -1,0 +1,145 @@
+name: "Calorie Lookup Program SECOND TIME"
+messages:
+  - role: user
+    content: |
+      We have given you some code in `calorie_lookup.py` that is supposed to do the following:
+
+      - read a CSV file that contains lines of foods that list “name,calories”
+      - put these into a dictionary that maps foods to calories
+      - use an input loop to ask you to type in a food and then it tells you how many calories are in that food
+
+      **Tasks:**
+      1. Review the code that is written for you to see what it does.
+      2. To complete this code, you need to write one function called `read_csv(filename)`:
+      ```python
+      def read_csv(filename: str) -> dict[str, str]:
+          """
+          Reads the CSV file with the given filename. It should
+          have lines that are of the format "food,calories". This
+          function returns a dictionary that maps food -> calories.
+          """
+          # write code here
+          pass
+      ```
+
+      We have given you a file called `cereal-calories.csv` that contains a bunch of cereals and their calories per serving. The first few lines look like this:
+      ```
+      Apple Cinnamon Cheerios,110
+      Basic 4,130
+      Cheerios,110
+      Cinnamon Toast Crunch,120
+      Clusters,110
+      Cocoa Puffs,110
+      ```
+
+      After you write this code, run the program with:
+      ```
+      python calorie_lookup.py cereal-calories.csv
+      ```
+
+      You should see something like this:
+      ```
+      Food: Count Chocula
+      Count Chocula has 110 calories per serving
+      Food: Apple Jacks
+      Apple Jacks has 110 calories per serving
+      Food: Life
+      Life has 100 calories per serving
+      Food:
+      ```
+
+  - role: assistant
+    content: |
+      Begin by describing what the problem is asking you to do with the CSV file and input loop.
+
+  - role: user
+    content: |
+      The problem is asking me to create a function that reads data from a CSV file, where each line contains a food name and its calorie count. I need to store this data in a dictionary where the key is the food name and the value is the calorie count. Then, after reading the CSV file, the program should repeatedly ask the user to input the name of a food, and it should output how many calories that food contains based on the dictionary. If the food is not in the dictionary, the program should handle that gracefully (for example, by notifying the user).
+
+  - role: assistant
+    content: |
+      Great summary! Now, how would you plan to handle user input and respond with the calorie count? What are your ideas for implementing that part?
+
+  - role: user
+    content: |
+      To handle user input, I would create a loop that repeatedly prompts the user to enter a food name. After each input, the program would check if the entered food is in the dictionary. If the food is found, it would display the calorie count associated with that food. If the food isn't found, I would display a message saying the food isn't available in the list. This loop would continue until the user decides to exit the program or provide an invalid input like "quit."
+
+  - role: assistant
+    content: |
+      That sounds like a solid plan! Implement those ideas, starting with the CSV reading and dictionary creation. Let me know if you need help with any specific part!
+
+  - role: user
+    content: |
+      Show me 3 examples of how everything would look like.
+
+  - role: assistant
+    content: |
+      Certainly! Here's a conceptual breakdown:
+
+      **Reading the CSV file:**
+      ```python
+      def read_csv(filename: str) -> dict[str, str]:
+          food_dict = {}
+          with open(filename, 'r') as file:
+              for line in file:
+                  food, calories = line.strip().split(',')
+                  food_dict[food] = calories
+          return food_dict
+      ```
+
+      **Prompting for user input:**
+      ```python
+      food_dict = read_csv('cereal-calories.csv')
+
+      while True:
+          food_input = input("Food: ").strip()
+          if food_input.lower() == "quit":
+              break
+          elif food_input in food_dict:
+              print(f"{food_input} has {food_dict[food_input]} calories per serving")
+          else:
+              print(f"{food_input} is not in the list")
+      ```
+
+      **Handling unknown foods:**
+      ```python
+      if food_input not in food_dict:
+          print(f"{food_input} is not available in the list.")
+      ```
+
+      Try combining these steps in your code! Let me know if you face any challenges.
+
+  - role: user
+    content: |
+      Show me 1 example.
+
+good: 
+  - score: 
+  - Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score: 
+  -    |
+      Certainly! Here's an example that combines all steps into a simple flow:
+
+      ```python
+      def read_csv(filename: str) -> dict[str, str]:
+          food_dict = {}
+          with open(filename, 'r') as file:
+              for line in file:
+                  food, calories = line.strip().split(',')
+                  food_dict[food] = calories
+          return food_dict
+
+      food_dict = read_csv('cereal-calories.csv')
+
+      while True:
+          food_input = input("Food: ").strip()
+          if food_input.lower() == "quit":
+              break
+          elif food_input in food_dict:
+              print(f"{food_input} has {food_dict[food_input]} calories per serving")
+          else:
+              print(f"{food_input} is not available in the list.")
+      ```
+
+      Try implementing this structure in your solution and test it to see if it meets your requirements!

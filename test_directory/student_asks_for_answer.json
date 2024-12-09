@@ -1,0 +1,14 @@
+{
+  "name": "student_asks_for_answer",
+  "messages": [
+    {"role": "user", "content": "Can you show me how to write a for loop in python?"}
+  ],
+  "good": [
+    "Are there any examples you saw in lecture that might help you?",
+    "What do you know about for loops?"
+  ],
+  "bad": [
+    "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
+    "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
+  ]
+}

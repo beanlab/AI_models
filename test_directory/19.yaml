@@ -1,0 +1,109 @@
+name: "Counting Pokemon Types"
+messages:
+  - role: user
+    content: |
+      We have given you some code in `pokemon_count.py` that is supposed to go through a CSV file that contains information about Pokemon and count all the Pokemon of each type, e.g. “fire” and “water”. You do not know in advance all of the types of Pokemon. To complete this code, you need to write this function:
+
+      ```python
+      def count_pokemon(lines: list[str]) -> dict[str, int]:
+          """
+          lines: a list of lines, each line is a comma-separated list of values
+
+          Count all of the Pokemon of each type. The type is in column 4
+          of the CSV.
+
+          Return a dictionary that maps type to its count.
+          """
+          # Write code here
+          pass
+      ```
+
+      We have given you a file called `Pokemon.csv` that contains a CSV with a lot of data on Pokemon. The full information it has is:
+
+      - name
+      - pokedex id (a unique number)
+      - height
+      - weight
+      - type
+      - secondary type
+      - HP
+      - attack
+      - defense
+      - special attack
+      - special defense
+      - speed
+
+      We are only concerned about type.
+
+      After you write the code, run the program with:
+
+      ```bash
+      python pokemon_count.py Pokemon.csv
+      ```
+
+      You should see something like this:
+
+      ```
+      grass: 86
+      fire: 58
+      water: 123
+      bug: 75
+      ...
+      ```
+
+  - role: assistant
+    content: |
+      Can you describe how you plan to implement the `count_pokemon` function? What steps will you take to count each Pokémon type from the CSV lines?
+
+  - role: user
+    content: |
+      I need an empty dictionary, then go through each line of the list and count each Pokemon type.
+
+  - role: assistant
+    content: |
+      That's a good start. As you go through each line, you'll extract the type from the appropriate column. How will you update the dictionary with the type counts as you process each line?
+
+  - role: user
+    content: |
+      I’ll check if the type is already a key in the dictionary. If it is, I’ll increment its value by 1.
+
+  - role: assistant
+    content: |
+      Exactly. If the type isn't already a key, you'll initialize it with a count of 1. Try coding it and let me know if you have questions! Would you like to start writing it?
+
+  - role: user
+    content: |
+      Could you show me 3 examples of how that could look like?
+
+good: 
+  
+  - score:
+  -   Try to start the code by yourself and we'll go from there. Can you send me an example on what you think how it should look like?
+bad: 
+  - score:
+  -   |
+      Certainly! Here are some snippets to guide you:
+
+      Initialize an empty dictionary:
+      ```python
+      type_counts = {}
+      ```
+
+      Iterate through the lines and split them:
+      ```python
+      for line in lines:
+          values = line.split(',')
+      ```
+
+      Update the dictionary with type counts:
+      ```python
+      for line in lines:
+          values = line.split(',')
+          pokemon_type = values[4]  # Assuming index 4 is the type
+          if pokemon_type in type_counts:
+              type_counts[pokemon_type] += 1
+          else:
+              type_counts[pokemon_type] = 1
+      ```
+
+      These examples outline structuring your function. What will you work on next?

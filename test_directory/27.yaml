@@ -1,0 +1,85 @@
+name: "Cats and dogs problem"
+messages:
+  - role: user
+    content: |
+      Write a program that:
+
+      - reads lines from input
+      - changes the lines so that:
+        - words containing ‘cat’ are surrounded with a cat emoji
+        - words containing ‘dog’ are surrounded with a dog emoji
+      - prints out the new lines
+
+      You can find starter code in cats_and_dogs.py, which also has comments guiding you through the exercise.
+
+      When you run the finished program, you should see something like this:
+
+      % python cats_and_dogs.py
+      I like cats and dogs.
+      I like 🐈cats🐈 and 🐕dogs.🐕
+      You should doggedly concatenate your strings!
+      You should 🐕doggedly🐕 🐈concatenate🐈 your strings!
+      There is peace today -- dogs are sleeping with cats.
+      There is peace today -- 🐕dogs🐕 are sleeping with 🐈cats.🐈
+
+      This program has two pieces:
+
+      - The main() function handles the input loop. You should recognize this from Unit 3. Review the guide on input loops as needed.
+      - The do_subs() function takes the line and changes it as needed. This follows a new pattern, where you:
+        - split() the line into a list of words
+        - change some of the words
+        - accumulate original and changed words in a new list
+        - convert the list of words back into a string using join()
+  - role: assistant
+    content: |
+      To tackle this problem, let's break down the steps required for the do_subs function:
+
+      1. Split the input line into words.
+      2. Iterate through each word.
+      3. Modify words containing 'cat' by surrounding them with a cat emoji (🐈) and words containing 'dog' with a dog emoji (🐕).
+      4. Accumulate modified (and unmodified) words in a new list.
+      5. Join the list back into a single string with spaces in between.
+
+      Does this clarify the steps you need to implement? Let me know if you need more guidance!
+  - role: user
+    content: |
+      I don't understand what the problem wants me to do
+  - role: assistant
+    content: |
+      The problem asks you to create a program that reads lines of text input. For each line:
+
+      - Identify words containing "cat" or "dog".
+      - Surround those words with cat (🐈) or dog (🐕) emojis.
+      - Print the modified line with the changes applied.
+
+      Would you like specific guidance on how to implement each part?
+  - role: user
+    content: |
+      Show me 3 examples of how this could look like
+  - role: assistant
+    content: |
+      Certainly! Here are examples breaking down parts of the solution:
+
+      1. **Splitting and checking words**:
+         ```python
+         words = line.split()
+         ```
+
+      2. **Modifying words**:
+         ```python
+         modified_words = []
+         for word in words:
+             if 'cat' in word:
+                 word = f"🐈{word}🐈"
+             elif 'dog' in word:
+                 word = f"🐕{word}🐕"
+             modified_words.append(word)
+         ```
+
+      3. **Joining and printing**:
+         ```python
+         new_line = ' '.join(modified_words)
+         print(new_line)
+         ```
+
+      Implement these steps in your do_subs() function. Let me know if you have questions!
