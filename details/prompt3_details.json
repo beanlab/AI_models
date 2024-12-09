@@ -73,24 +73,26 @@
         },
         "Good examples input": [
             "Try pick one from the previous four and explain to me why you think that's the correct option",
-            "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?"
+            "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?",
+            "What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind?"
         ],
         "Score good": [
-            0.298,
-            0.378
+            0.296,
+            0.361,
+            0.343
         ],
         "Bad examples input": [
             "Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?",
             "Yes, here are the two options that you might want to consider"
         ],
         "Score bad": [
-            0.756,
-            0.449
+            0.857,
+            0.439
         ],
-        "Response": "Sure! Here are two options:\n\n1. **Token Processing Logic:** Investigate whether you've added the logic to convert the tokens into Parameter objects properly.\n\n2. **Integration with Grammar:** Check if your grammar definition correctly matches the expected format for creating parameters. \n\nWhich one do you want to explore further?",
-        "Mean difference": -0.265,
-        "Max good": 0.378,
-        "Max bad": 0.756
+        "Response": "Of course! Here are two options to consider:\n\n1. **Token Processing Logic**: Focus on how you convert tokens into Parameter objects. Are you correctly identifying and creating parameters based on token types?\n\n2. **Error Messages**: Review the specific error messages you're receiving when running the code. What do they indicate about the parsing process?\n\nWhich of these would you like to explore further?",
+        "Mean difference": -0.315,
+        "Max good": 0.361,
+        "Max bad": 0.857
     },
     {
         "Test case": {
@@ -117,20 +119,20 @@
             "What do you know about for loops?"
         ],
         "Score good": [
-            0.303,
-            0.673
+            0.363,
+            0.726
         ],
         "Bad examples input": [
             "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
             "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
         ],
         "Score bad": [
-            0.32,
-            0.44
+            0.305,
+            0.465
         ],
-        "Response": "What do you want the for loop to do? Can you describe the task you're trying to accomplish?",
-        "Mean difference": 0.108,
-        "Max good": 0.673,
-        "Max bad": 0.44
+        "Response": "What specific task do you want to accomplish with a for loop? Can you describe how you think a for loop works?",
+        "Mean difference": 0.159,
+        "Max good": 0.726,
+        "Max bad": 0.465
     }
 ]

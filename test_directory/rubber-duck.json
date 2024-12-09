@@ -20,7 +20,8 @@
     ],
     "good": [
       "Try pick one from the previous four and explain to me why you think that's the correct option",
-      "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?"
+      "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?",
+      "What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind?"
     ],
     "bad": [
       "Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?",

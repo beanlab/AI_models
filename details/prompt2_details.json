@@ -73,24 +73,26 @@
         },
         "Good examples input": [
             "Try pick one from the previous four and explain to me why you think that's the correct option",
-            "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?"
+            "I am not allowed to give you two options but I can provide more explantion on the previous four options, would you like me to explain?",
+            "What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind?"
         ],
         "Score good": [
-            0.299,
-            0.376
+            0.317,
+            0.416,
+            0.346
         ],
         "Bad examples input": [
             "Certainly. Here are two options you might focus on: Token Conversion Logic: Check if there is a lack of logic for converting tokens into Parameter objects, and ensure tokens are properly extracted and transformed. Error Message Review: Look at the specific error messages for clues on which parts of the code are causing issues, and address any syntax or logical errors they highlight. Which one would you like to explore further?",
             "Yes, here are the two options that you might want to consider"
         ],
         "Score bad": [
-            0.856,
-            0.426
+            0.851,
+            0.472
         ],
-        "Response": "Sure! Here are two options to focus on:\n\n1. **Token Processing Logic**: Check if you've implemented the logic to convert tokens into Parameter objects and how that process is structured.\n\n2. **Error Messages**: Look closely at the error messages you're getting when you run your code. Identifying the specific issue from the message could lead to solving the problem.\n\nWhich option would you like to explore further?",
-        "Mean difference": -0.303,
-        "Max good": 0.376,
-        "Max bad": 0.856
+        "Response": "Sure! Here are two options you can choose from: \n\n1. **Token Processing Logic**: Check if you have implemented the code to convert tokens into Parameter objects correctly. \n\n2. **Error Messages**: Review the specific error messages you're getting when you run the code to identify any inconsistencies.\n\nWhich option would you like to explore further?",
+        "Mean difference": -0.301,
+        "Max good": 0.416,
+        "Max bad": 0.851
     },
     {
         "Test case": {
@@ -117,20 +119,20 @@
             "What do you know about for loops?"
         ],
         "Score good": [
-            0.387,
-            0.685
+            0.279,
+            0.701
         ],
         "Bad examples input": [
             "Sure. \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n",
             "Here are some examples of for loops in python: \n```python\nfor fruit in ['apple', 'pear']:\n    print(fruit)\n```\n"
         ],
         "Score bad": [
-            0.33,
-            0.457
+            0.43,
+            0.587
         ],
-        "Response": "What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind?",
-        "Mean difference": 0.142,
-        "Max good": 0.685,
-        "Max bad": 0.457
+        "Response": "What do you think a for loop is used for in Python? Can you describe how you would write one?",
+        "Mean difference": -0.018,
+        "Max good": 0.701,
+        "Max bad": 0.587
     }
 ]

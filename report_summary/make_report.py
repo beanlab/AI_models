@@ -54,7 +54,7 @@ def gather_data_html(test_details):
         </div>
         """
         html_string += html
-        main_difference.append(each_test_detail["Mean difference"])
+        main_difference.append(round(each_test_detail['Max good'] - each_test_detail['Max bad'], 3))
         name.add(each_test_detail['Test case']['name'])
     return html_string,main_difference, name
 
@@ -66,11 +66,41 @@ def render_result(detail_report) -> str:
     html = f"""
         <summary>
             <h2>Title: {name}</h2>
-        <section>
-            <h3>Good Examples</h3>
-            <ul>
+    """
+    #Add Prompt Model
+    html += f"""
+            <section>
+                <h3>Prompt model</h3>
+                <ul>            {detail_report["Test input"]["model"]} </ul>
+            </section>
+    """
+    # Add Prompt Context
+    html += """
+            <section>
+                <h3>Prompt Context</h3>
+                <ul>"""
+    for message in detail_report["Test input"]["prompt"]:
+        html += f"            <li>{message['role'].upper()} : {message['content']}</li><br>\n"
+    html += """
+                </ul>
+            </section>
+    """
+    # Add Test Case Context
+    html += """
+            <section>
+                <h3>Test Case Context</h3>
+                <ul>"""
+    for message in detail_report["Test case"]["messages"]:
+        
+        html += f"            <li>{message['role'].upper()} : {message['content']}</li><br>\n"
+    html += """
+                </ul>
+            </section>
     """
     # Add Good Examples
+    html += """<section>
+            <h3>Good Examples</h3>
+            <ul>"""
     for i, example in enumerate(detail_report["Good examples input"], start=1):
         code_block = example.replace("\n", "<br>")
         html += f"            <li>{i}: {code_block}</li>\n"
@@ -89,12 +119,12 @@ def render_result(detail_report) -> str:
         html += f"""            <li>{i}: {code_block}</li>\n"""
 
     # Add AI Response Section
-    html += """
+    html += f"""
             </ul>
         </section>
         <section>
             <h3>AI Response</h3>
-            <p>What specifically do you want to do with the for loop? Can you describe a scenario or task you have in mind? </p><br>
+            <ul>            {detail_report["Response"]} </ul><br>
             <p>\n\n\n \n \n \n </p>
         </section>
     </summary>
@@ -160,7 +190,7 @@ def get_table(test_details,test_name):
     <table border="1" >
     <h2 style="text-align: center;">Overview Report</h2>
   <tr>
-    <th></th>
+    <th>Test Cases</th>
 """
     for file_name in test_details.keys():
         html += f"<th><a href='{file_name}/report.html'>{file_name}</a></th>"
