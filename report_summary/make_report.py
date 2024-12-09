@@ -70,7 +70,7 @@ def render_result(detail_report) -> str:
     #Add Prompt Model
     html += f"""
             <section>
-                <h3>Prompt model</h3>
+                <h3>Prompt Model</h3>
                 <ul>            {detail_report["Test input"]["model"]} </ul>
             </section>
     """
