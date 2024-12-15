@@ -7,12 +7,10 @@ import pandas as pd
 def main(template_file: Path, report_file: Path):
     template_string = template_file.read_text()
     overall_report_list={}
-    name =set()
     for test_case_file in report_file.glob('*.json'):
         main_difference, name_set,promt_name = generate_report_html(template_string,test_case_file)
         overall_report_list[promt_name] = main_difference
-        name.update(name_set)
-    make_overview(template_string,overall_report_list,name)
+    make_overview(template_string,overall_report_list,name_set)
 
 def generate_report_html(template_string,testcase_file) -> str:
     with open(testcase_file, 'r') as file:
@@ -31,8 +29,9 @@ def gather_data_html(test_details):
     html_string = ""
     i=0
     main_difference=[]
-    name=set()
-    for each_test_detail in test_details:
+    name=[]
+    sorted_list = sorted(test_details, key=lambda x: x['Test case']['name'])
+    for each_test_detail in sorted_list:
         i+=1
         detail_info = render_result(each_test_detail)
         svg_b64 = generate_svg(each_test_detail['Test case']['name'],each_test_detail['Score good'], each_test_detail['Score bad'])
@@ -55,7 +54,7 @@ def gather_data_html(test_details):
         """
         html_string += html
         main_difference.append(round(each_test_detail['Max good'] - each_test_detail['Max bad'], 3))
-        name.add(each_test_detail['Test case']['name'])
+        name.append(each_test_detail['Test case']['name'])
     return html_string,main_difference, name
 
 def render_result(detail_report) -> str:
@@ -157,33 +156,60 @@ def generate_svg(name,  good,bad) -> str:
     return img_bytes.getvalue().decode()
 
 def make_overview(template_string,test_details,test_name):
-    sorted_by_keys = dict(sorted(test_details.items()))
-    return_value = get_table(sorted_by_keys,list(test_name))
-    generate_graph(sorted_by_keys,list(test_name))
-    img_tage = f'<img src="../line_chart.png" alt="Line Chart Representing Values by Prompts"> </div>'
+    sorted_list = sorted(test_details)
+    return_value = get_table(sorted_list,test_details,test_name)
+    generate_graph(sorted_list,test_details,test_name)
+    #hardcoded image tag, change the path if needed
+    img_tage = f'<img src="../histogram_chart.png" alt="Line Chart Representing Values by Prompts"> </div>'
     html_content = template_string.replace('%%DATA%%', return_value+img_tage)
     with Path("report_summary/overview.html").open("w") as file:
         file.write(html_content)
     
-def generate_graph(test_details,test_name):
+#line chart
+# def generate_graph(test_details,test_name):
+#     plt.figure(figsize=(8+len(test_name)*0.3, 6+len(test_name)*0.3))
+#     for i in range(len(test_name)):
+#         list_=[]
+#         for value in test_details.values():
+#             list_.append(value[i])
+#         plt.plot(test_details.keys(), list_, marker='o', label=test_name[i])
+    
+#     # Adding labels, title, and legend
+#     plt.title('Line Chart Representing Values by Prompts')
+#     plt.legend()
+#     plt.grid(True)
+#     plt.ylim(-1, 1)
+#     # Display the graph
+#     plt.tight_layout()
+#     plt.savefig('line_chart.png')
+#     plt.show
+
+#Histogram
+def generate_graph(sorted_list, test_details, test_name):
+    # Convert the length of test_name into number of bins
+    number_of_bins = len(test_name)
+
     plt.figure(figsize=(8+len(test_name)*0.3, 6+len(test_name)*0.3))
-    for i in range(len(test_name)):
-        list_=[]
-        for value in test_details.values():
-            list_.append(value[i])
-        plt.plot(test_details.keys(), list_, marker='o', label=test_name[i])
-    
-    # Adding labels, title, and legend
-    plt.title('Line Chart Representing Values by Prompts')
-    plt.legend()
+    for i, name in enumerate(sorted_list):
+        # test_details[name] should be numeric data
+        plt.hist(
+            x=test_details[name],
+            bins=number_of_bins,        # Use integer bins derived from the length of test_name
+            range=(-1,1),
+            alpha=0.5,
+            label=name                  # Use name for the label, not sorted_list
+        )
+
+    plt.title('Histogram Representing Value Distribution by Test')
+    plt.xlabel('Value')
+    plt.ylabel('Frequency')
     plt.grid(True)
-    plt.ylim(-1, 1)
-    # Display the graph
+    plt.legend()   # Automatically picks up labels from each plt.hist call
     plt.tight_layout()
-    plt.savefig('line_chart.png')
-    plt.show
+    plt.savefig('histogram_chart.png')
+    plt.show()
     
-def get_table(test_details,test_name):
+def get_table(sorted_list,test_details,test_name):
     html = f"""
     <div class="align-middle">
     <div class="table-wrapper">
@@ -192,7 +218,7 @@ def get_table(test_details,test_name):
   <tr>
     <th>Test Cases</th>
 """
-    for file_name in test_details.keys():
+    for file_name in sorted_list:
         html += f"<th><a href='{file_name}/report.html'>{file_name}</a></th>"
     html+="</tr>"
     for i in range (len(test_name)):
