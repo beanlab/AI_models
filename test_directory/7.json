@@ -1,5 +1,5 @@
 {
-  "name": "7",
+  "name": "Random Number Generator in Python",
   "messages": [
       {"role": "user", "content": "Write a function in_range that checks if n is within the range of 1-100 (inclusive) and returns False if not. def in_range(n): \"\"\"Write a function that checks to see if n is within the range of 1-100 and have it return False if not in_range(9) True >>> in_range(-4) False \"\"\" \" YOUR CODE HERE \" Next, write code in the main function that generates 1000 random numbers between 1 and 101 (to simulate an infrequent error) and checks if those numbers are within range by calling the in_range function to validate the number generated. It should print out a message if the number is bad."}
 

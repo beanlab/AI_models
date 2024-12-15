@@ -1,5 +1,5 @@
 {
-  "name": "2",
+  "name": "Voting system with loop",
   "messages": [
       {"role": "user", "content": "Can you help me solve this task? I need to write a program that takes a prompt (a string) and reads a series of votes, then prints a dictionary counting which person or thing got the most votes. For example, I want to vote for my favorite foods."},
       {"role": "user", "content": "Here is an example: python voting.py food, then I would input food: lasagna, food: pizza, food: chicken parmesan, and so on. The output should be something like {'lasagna': 2, 'pizza': 3, 'chicken parmesan': 1}."},

@@ -1,5 +1,5 @@
 {
-  "name": "8",
+  "name": "Product of Two Numbers in C++",
   "messages": [
     {
       "role": "user", "content": "Write a program prod.cpp that takes in two command line arguments: num1 and num2.\n\nThe program should output the product of num1 and num2 following the format shown in the examples below\nThe program should support double inputs\nIf the user is missing an argument, print the error shown in the examples and exit with a non-zero exit code\n\n$ ./prod 5 4\n5 * 4 = 20\n\n$ ./prod 2.5 5\n2.5 * 5 = 12.5\n\n$ ./prod 3\nprod requires 2 arguments"

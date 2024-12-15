@@ -1,5 +1,5 @@
 {
-  "name": "3",
+  "name": "Calculator Program in C++",
   "messages": [
       {"role": "user", "content": "Write a calculator program in calculator.cpp. You can assume the user always provides valid inputs, e.g., the test will not enter lizard when the program expects a number. You won't be asked to divide or mod by zero. Support add, subtract, multiply, divide, and mod (modulus) operations. Each of these operations takes a left operand and right operand. If the user enters an invalid operation (one that is not add, subtract, etc.), your program should print '{operation} isn't a valid operation' and prompt the user to enter another operation. The program should exit when given an empty operation. Follow the formatting demonstrated in the example."},
       {"role": "assistant", "content": "What do you think the steps are to create this calculator program?"},
